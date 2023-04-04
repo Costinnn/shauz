@@ -1,0 +1,39 @@
+@use "../../index.scss";
+
+.navigation {
+  width: calc(100vw - (100vw - 100%));
+  max-width: 1440px;
+  margin: 0 auto 0 auto;
+  position: relative;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px 0 30px;
+  color: white;
+  z-index: 1;
+
+  a {
+    .logo {
+      width: 200px;
+    }
+  }
+
+  > svg {
+    path {
+      fill: index.$gray;
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .navigation {
+    .logo {
+      font-size: 35px;
+    }
+
+    > svg {
+      display: none;
+    }
+  }
+}
