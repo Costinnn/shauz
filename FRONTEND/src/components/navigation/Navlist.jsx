@@ -1,41 +1,36 @@
 import { Link } from "react-router-dom";
 
-import "./NavigationMenu.scss";
+import logo from "../../assets/global/logo.png";
 
-import logo from "../../assets/navigation/webits-logo.png";
+import "./Navlist.scss";
 
-const NavigationMenu = ({ handleMenu, showNav }) => {
+const Navlist = ({ handleMenu, showNav }) => {
   return (
     <div className={`navigationmenu ${showNav}`}>
       <ul>
         <li>
           <Link to="/" onClick={handleMenu}>
-            <img src={logo} alt="webits logo" />
+            <img src={logo} alt="logos" />
           </Link>
         </li>
         <li>
-          <Link to="/services" onClick={handleMenu}>
-            Servicii
+          <Link to="category" onClick={handleMenu}>
+            Barbati
           </Link>
         </li>
         <li>
-          <Link to="/projects" onClick={handleMenu}>
-            Proiecte
+          <Link to="category" onClick={handleMenu}>
+            Femei
           </Link>
         </li>
         <li>
-          <Link to="/prices" onClick={handleMenu}>
-            Preturi
+          <Link to="category" onClick={handleMenu}>
+            Copii
           </Link>
         </li>
         <li>
-          <Link to="/aboutus" onClick={handleMenu}>
-            Despre noi
-          </Link>
-        </li>
-        <li>
-          <Link to="/contact" onClick={handleMenu}>
-            Contact
+          <Link to="sale" onClick={handleMenu}>
+            Reduceri
           </Link>
         </li>
       </ul>
@@ -57,4 +52,4 @@ const NavigationMenu = ({ handleMenu, showNav }) => {
   );
 };
 
-export default NavigationMenu;
+export default Navlist;

@@ -4,7 +4,7 @@ import App from "./App";
 import "./index.scss";
 
 import { BrowserRouter } from "react-router-dom";
-import ScrollToTop from "../../webits/src/functions/scroll-to-top";
+import ScrollToTop from "../src/functions/scroll-to-top";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

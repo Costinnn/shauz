@@ -1,13 +1,13 @@
-import NavigationMenu from "../navigation/NavigationMenu";
-
-import "./Navigation.scss";
-
-import logo from "../../assets/navigation/webits-logo.png";
+import Navlist from "./NavList";
 
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
-const Navigation = () => {
+import logo from '../../assets/global/logo.png'
+
+import "./Navbar.scss";
+
+const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleMenu = () => {
@@ -22,7 +22,7 @@ const Navigation = () => {
     <>
       <nav className="navigation">
         <Link to="/">
-          <img className="logo" src={logo} alt="webits logo" />
+          <img className="logo" src={logo} alt="imglogo" />
         </Link>
 
         <svg
@@ -39,14 +39,11 @@ const Navigation = () => {
             d="M2 7a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1zm0 5a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1zm1 4a1 1 0 1 0 0 2h18a1 1 0 1 0 0-2H3z"
           />
         </svg>
-        <NavigationMenu
-          handleMenu={handleMenu}
-          showNav={menuOpen ? "shownav" : ""}
-        />
+        <Navlist handleMenu={handleMenu} showNav={menuOpen ? "shownav" : ""} />
       </nav>
       <Outlet />
     </>
   );
 };
 
-export default Navigation;
+export default Navbar;

@@ -1,17 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100;300;400;500;600;800;900&family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap");
+
 // COLLOR PALLETE
-
-$white: #f5f5f5;
-$platinum: #e2dddf;
-$gray: #b0acb0;
-$blue: #85ebd9;
-$cyan: #3d898d;
-$charcoal: #21404d;
-$black: #1c1f21;
-
-$heliotrope: #cc85ff;
-$grape: #6b00b8;
-$violet: #8f00f5;
-$indigo: #47007a;
+$white: #fbfefd;
+$lightblue: #c4dde9;
+$mint: #43c7d0;
+$darkblue: #425260;
+$lightblack: #2d3031;
+$black: #141a1b;
 
 // font-family: 'Poppins', sans-serif;  TITLES
 // font-family: 'Heebo', sans-serif;    TEXTS
@@ -21,11 +16,11 @@ $indigo: #47007a;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: #1c1f21;
+  color: #141a1b;
 }
 
 body {
-  
+  background-color: #fbfefd;
 }
 
 li {
@@ -36,18 +31,16 @@ a:link,
 a:visited,
 a:hover,
 a:active {
-  color: black;
+  color: #141a1b;
   text-decoration: none;
 }
 
 .section-wide {
-  // border: 1px solid red;
   width: 100%;
 }
 
 .section-narrow,
 .content {
-  // border: 1px solid red;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto 0 auto;
@@ -61,7 +54,7 @@ a:active {
   text-align: center;
   font-size: 25px;
   h1 {
-    background: linear-gradient(to bottom, #8f00f5, #85ebd9);
+    background: linear-gradient(to bottom, #141a1b, #c4dde9);
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -73,11 +66,19 @@ h3,
 h4,
 h5,
 h6 {
- 
+  font-family: "Poppins", sans-serif;
 }
-p {
-  
+p,
+a {
+  font-family: "Heebo", sans-serif;
 }
 
 // GENERAL STYLES
 
+.button1 {
+  background-color: #fbfefd;
+  color: #2d3031 !important;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: 500;
+}

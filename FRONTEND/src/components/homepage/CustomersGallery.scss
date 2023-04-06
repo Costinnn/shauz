@@ -1,0 +1,49 @@
+.customer-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h2 {
+    margin-top: 30px;
+    font-size: 30px;
+  }
+  p {
+    text-align: center;
+    max-width: 70%;
+    font-size: 14px;
+  }
+  .frame {
+    margin: 0 15px;
+    overflow: hidden;
+    position: relative;
+
+    .left-arrow,
+    .right-arrow {
+      position: absolute;
+      z-index: 2;
+      top: calc(50% - 15px);
+      width: 30px;
+      background-color: #fbfefd;
+      border-radius: 50%;
+      padding: 5px;
+    }
+    .left-arrow {
+      left: 10px;
+    }
+    .right-arrow {
+      right: 10px;
+    }
+
+    .frame-content {
+      display: flex;
+      flex-wrap: wrap;
+      width: 300%; // change value if number of photos changed --(number of photos/2)*100--
+      transition: transform 0.7s ease-in;
+      img {
+        width: 16.6666%; // change value if number of photos changed --100/number of photos--
+        padding: 0 5px;
+      }
+    }
+  }
+}

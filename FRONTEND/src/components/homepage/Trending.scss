@@ -1,0 +1,22 @@
+.trending {
+  width: 100%;
+  h2 {
+    font-size: 30px;
+    margin: 20px 0 0 10px;
+  }
+  .frame {
+    overflow-x: hidden;
+    overflow-x: scroll;
+    width: calc(100vw - (100vw - 100%));
+    max-width: 1440px;
+    padding-left: 5px;
+    margin-top: 10px;
+    .frame-content {
+      width: calc(
+        400% - 200px
+      ); // for more images in gallery modify here 1/2 (4x40px = 160px)
+      display: flex;
+      gap: 10px;
+    }
+  }
+}
