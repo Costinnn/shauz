@@ -1,0 +1,84 @@
+@use "../../index.scss";
+
+.product-page {
+  margin: 80px auto 0 auto !important;
+  .photos {
+    position: relative;
+    .photo-list {
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      > img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border: 2px solid index.$darkwhite;
+      }
+    }
+    .wishlist {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 25px;
+    }
+    .photo {
+      width: 100%;
+    }
+  }
+  .options {
+    padding: 10px;
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    p {
+      font-size: 15px;
+    }
+    .size-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 15px;
+      margin-top: 30px;
+    }
+    .sizes {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .size-btn {
+        width: 15%;
+        padding: 10px 0;
+        text-align: center;
+        background-color: index.$darkwhite;
+        border: 1px solid index.$lightgray;
+
+        span {
+          color: index.$lightblack;
+          font-weight: 600;
+        }
+      }
+    }
+    .button2 {
+      margin: 20px auto 0 auto;
+      display: block;
+      width: 100%;
+      max-width: 400px;
+    }
+    .description {
+      margin-top: 20px;
+      h3 {
+        font-size: 15px;
+        font-weight: 500;
+        border-bottom: 1px solid index.$lightgray;
+      }
+      p {
+        font-size: 14px;
+        margin-top: 5px;
+      }
+    }
+  }
+}

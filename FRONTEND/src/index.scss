@@ -2,9 +2,11 @@
 
 // COLLOR PALLETE
 $white: #fbfefd;
+$darkwhite: #ebefef;
 $lightblue: #c4dde9;
 $mint: #43c7d0;
 $darkblue: #425260;
+$lightgray: #92989a;
 $lightblack: #2d3031;
 $black: #141a1b;
 
@@ -69,7 +71,11 @@ h6 {
   font-family: "Poppins", sans-serif;
 }
 p,
-a {
+a,
+span,
+label,
+input,
+select {
   font-family: "Heebo", sans-serif;
 }
 
@@ -81,4 +87,23 @@ a {
   padding: 10px 20px;
   font-size: 20px;
   font-weight: 500;
+  font-family: "Poppins", sans-serif;
+}
+
+.button2,
+.button3 {
+  border: none;
+  background-color: #2d3031;
+  border: 1px solid #2d3031;
+  color: #ebefef !important;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  padding: 10px 5px;
+}
+.button3 {
+  background-color: #ebefef;
+
+  color: #2d3031 !important;
 }

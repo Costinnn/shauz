@@ -1,0 +1,41 @@
+.footer {
+  background-color: #ebefef;
+  padding: 30px 20px 10px 20px;
+  margin-top: 30px;
+  .general {
+    font-size: 13px;
+    a {
+      display: block;
+      margin-top: 7px;
+      border-bottom: 1px solid #92989a;
+    }
+  }
+  .legal {
+    font-size: 13px;
+    > a {
+      display: block;
+      margin-top: 7px;
+      border-bottom: 1px solid #92989a;
+    }
+    img {
+      width: 100px;
+      margin-top: 7px;
+    }
+  }
+  .social {
+    margin-top: 7px;
+    img {
+      width: 20px;
+      margin-right: 10px;
+    }
+  }
+  > p {
+    font-size: 10px;
+    text-align: center;
+    a {
+      background: linear-gradient(to bottom, #8f00f5, #85ebd9);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.category-page {
+  h1 {
+    margin-top: 80px;
+    padding-left: 20px;
+    font-size: 30px;
+    font-weight: 600;
+  }
+  > p {
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  .products {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+  }
+  .text {
+    > p {
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 12px;
+    }
+  }
+}

@@ -3,7 +3,7 @@
 .navigationmenu {
   position: absolute;
   top: 0;
-  right: -100vw;
+  left: -100vw;
   width: 100%;
   height: 100vh;
   background-color: index.$white;
@@ -16,7 +16,7 @@
   svg {
     position: absolute;
     top: 15px;
-    right: 15px;
+    left: 15px;
   }
   path {
     fill: index.$lightblack;
@@ -32,7 +32,7 @@
       img {
         max-width: 100px;
       }
-      a{
+      a {
         color: index.$lightblack;
       }
     }
@@ -45,9 +45,9 @@
 .shownav {
   position: fixed;
   opacity: 1;
-  z-index: 3;
+  z-index: 4;
   top: 0;
-  right: 0;
+  left: 0;
   transition: opacity 0.5s ease-in;
 }
 

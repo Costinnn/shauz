@@ -7,14 +7,14 @@ import CustomersGallery from "../../components/homepage/CustomersGallery";
 
 const Homepage = () => {
   return (
-    <div className="homepage">
+    <main className="homepage">
       <Header />
       <Trending />
       <Category />
       <Products />
       <Banner />
       <CustomersGallery />
-    </div>
+    </main>
   );
 };
 

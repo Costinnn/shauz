@@ -24,6 +24,35 @@
       fill: black;
     }
   }
+  .cawi-box {
+    display: flex;
+    align-items: center;
+
+    .cawi {
+      position: relative;
+      img {
+        width: 30px;
+      }
+      span {
+        position: absolute;
+        top: -8px;
+        right: -6px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #141a1b;
+        color: #fbfefd;
+        font-size: 10px;
+      }
+    }
+
+    .wishlist {
+      margin-right: 10px;
+    }
+  }
 }
 
 @media (min-width: 800px) {
