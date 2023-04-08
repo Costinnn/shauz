@@ -70,12 +70,19 @@ h5,
 h6 {
   font-family: "Poppins", sans-serif;
 }
+h1 {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 30px;
+  font-weight: 600;
+}
 p,
 a,
 span,
 label,
 input,
-select {
+select,
+textarea {
   font-family: "Heebo", sans-serif;
 }
 
@@ -104,6 +111,5 @@ select {
 }
 .button3 {
   background-color: #ebefef;
-
   color: #2d3031 !important;
 }

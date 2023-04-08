@@ -18,6 +18,8 @@ const PRODUCTS_DATA = [
       xl: 5,
     },
     price: 30,
+    sale: true,
+    category: ["men", "women"],
   },
   {
     id: 2,
@@ -32,6 +34,8 @@ const PRODUCTS_DATA = [
       xl: 5,
     },
     price: 15,
+    sale: false,
+    category: ["women"],
   },
   {
     id: 3,
@@ -46,6 +50,8 @@ const PRODUCTS_DATA = [
       xl: 5,
     },
     price: 40,
+    sale: true,
+    category: ["women"],
   },
   {
     id: 4,
@@ -60,6 +66,8 @@ const PRODUCTS_DATA = [
       xl: 5,
     },
     price: 35,
+    sale: false,
+    category: ["kids"],
   },
   {
     id: 5,
@@ -74,6 +82,8 @@ const PRODUCTS_DATA = [
       xl: 5,
     },
     price: 20,
+    sale: false,
+    category: ["men", "women"],
   },
   {
     id: 6,
@@ -88,6 +98,8 @@ const PRODUCTS_DATA = [
       xl: 5,
     },
     price: 20,
+    sale: true,
+    category: ["men", "women"],
   },
 ];
 

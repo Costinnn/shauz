@@ -14,17 +14,17 @@ const Navlist = ({ handleMenu, showNav }) => {
           </Link>
         </li>
         <li>
-          <Link to="category" onClick={handleMenu}>
+          <Link to="category/men" onClick={handleMenu}>
             Barbati
           </Link>
         </li>
         <li>
-          <Link to="category" onClick={handleMenu}>
+          <Link to="category/women" onClick={handleMenu}>
             Femei
           </Link>
         </li>
         <li>
-          <Link to="category" onClick={handleMenu}>
+          <Link to="category/kids" onClick={handleMenu}>
             Copii
           </Link>
         </li>

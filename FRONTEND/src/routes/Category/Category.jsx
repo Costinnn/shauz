@@ -3,11 +3,18 @@ import Product from "../../subcomponents/Product";
 import PRODUCTS_DATA from "../../data";
 
 import "./Category.scss";
+import { useParams } from "react-router-dom";
 
 const Category = () => {
+  const urlId = useParams().id;
+  const products = PRODUCTS_DATA.filter(
+    (product) => product.category[0] === urlId || product.category[1] === urlId
+  );
   return (
     <main className="section-narrow category-page">
-      <h1>BARBATI</h1>
+      <h1>
+        {urlId === "men" ? "BARBATI" : urlId === "women" ? "FEMEI" : "COPII"}
+      </h1>
       <p>
         Descopera noile colectii Shauz. O varietate de tricouri cu imprimeuri
         grafice, design unic si un fit regular sau oversized. Imbracaminte
@@ -15,7 +22,7 @@ const Category = () => {
         cu zi.
       </p>
       <div className="products">
-        {PRODUCTS_DATA.map((product) => (
+        {products.map((product) => (
           <Product key={product.id} product={product} />
         ))}
       </div>

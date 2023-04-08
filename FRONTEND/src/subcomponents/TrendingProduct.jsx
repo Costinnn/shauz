@@ -9,7 +9,7 @@ import "./TrendingProduct.scss";
 const TrendingProduct = ({ product }) => {
   return (
     <div className="product">
-      <Link>
+      <Link to={`/product/${product.id}`}>
         <img src={product.image} alt={product.title} />
       </Link>
       <div className="info">

@@ -3,7 +3,12 @@ import Category from "./routes/Category/Category";
 import Cart from "./routes/Cart/Cart";
 import Wishlist from "./routes/Wishlist/Wishlist";
 import Checkout from "./routes/Checkout/Checkout";
+import Sale from "./routes/Category/Sale";
 import Product from "./routes/Product/Product";
+import General from "./routes/General/General";
+import Sizes from "./routes/General/Sizes";
+import Contact from "./routes/Contact/Contact";
+import Notfound from "./routes/Notfound";
 import NavFooter from "./routes/NavFooter/NavFooter";
 
 import { Routes, Route } from "react-router-dom";
@@ -16,11 +21,16 @@ function App() {
       <Routes>
         <Route path="/" element={<NavFooter />}>
           <Route index element={<Homepage />} />
-          <Route path="category" element={<Category />} />
+          <Route path="category/:id" element={<Category />} />
+          <Route path="sale" element={<Sale />} />
           <Route path="cart" element={<Cart />} />
           <Route path="wishlist" element={<Wishlist />} />
           <Route path="checkout" element={<Checkout />} />
-          <Route path="product" element={<Product />} />
+          <Route path="product/:id" element={<Product />} />
+          <Route path="general/:id" element={<General />} />
+          <Route path="sizes" element={<Sizes />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<Notfound />} />
         </Route>
       </Routes>
     </div>

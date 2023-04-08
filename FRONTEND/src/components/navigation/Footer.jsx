@@ -12,15 +12,15 @@ const Footer = () => {
     <footer className="footer">
       <div className="general">
         <Link to="/contact">CONTACT</Link>
-        <Link to="/shipping">LIVRARE</Link>
-        <Link to="/return">RETUR</Link>
-        <Link to="/sizetable">TABEL MARIMI</Link>
-        <Link to="/care">CUM SA INTRETII PRODUSUL?</Link>
+        <Link to="/general/shipping">LIVRARE</Link>
+        <Link to="/general/return">RETUR</Link>
+        <Link to="/sizes">TABEL MARIMI</Link>
+        <Link to="/general/care">CUM SA INTRETII PRODUSUL?</Link>
       </div>
 
       <div className="legal">
-        <Link to="/policy">POLITICA DE CONFIDENTIALITATE</Link>
-        <Link to="/terms">TERMENI SI CONDITII</Link>
+        <Link to="/general/policy">POLITICA DE CONFIDENTIALITATE</Link>
+        <Link to="/general/terms">TERMENI SI CONDITII</Link>
         <div>
           <a href="https://anpc.ro/ce-este-sal/">
             <img src={anpc1} alt="" />
@@ -39,12 +39,12 @@ const Footer = () => {
         </a>
       </div>
       <p>SHAUZ CLOTING 2023&copy; ALL RIGHTS RESERVED</p>
-      <p>
-        MADE BY{" "}
+      {/* <p>
+        MADE BY
         <a href="http://www.webits.ro" target="_blank">
           WEBITS
         </a>
-      </p>
+      </p> */}
     </footer>
   );
 };

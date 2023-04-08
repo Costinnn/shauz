@@ -7,10 +7,11 @@ import wishlist from "../../assets/global/wishlist.png";
 import PRODUCTS_DATA from "../../data";
 
 import "./Product.scss";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Product = () => {
-  const product = PRODUCTS_DATA[4];
+  const urlId = useParams().id;
+  const product = PRODUCTS_DATA[Number(urlId) - 1];
 
   return (
     <div className="section-narrow product-page">

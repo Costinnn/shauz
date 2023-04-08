@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
+import "./WishProduct.scss";
 
-import "./CartProduct.scss";
-
-const CartProduct = ({ product }) => {
+const WishProduct = ({ product }) => {
   return (
-    <div className="cart-product">
+    <div className="wish-product">
       <Link to={`/product/${product.id}`}>
         <img src={product.image} alt={product.title} />
       </Link>
@@ -23,23 +22,15 @@ const CartProduct = ({ product }) => {
               <option value="xs">XL</option>
             </select>
           </div>
-
-          <div>
-            <label>Cantitate:</label>
-            <input
-              type="number"
-              name="quantity"
-              id="quantity"
-              defaultValue="1"
-              min="1"
-              max="5"
-            />
-          </div>
         </form>
-        <p className="remove">ELIMINA</p>
+        <p className="desc">{product.desc.slice(0, 80)}...</p>
+        <div className="actions">
+          <p className="remove">ELIMINA</p>
+          <p className="add">ADAUGA IN COS</p>
+        </div>
       </div>
     </div>
   );
 };
 
-export default CartProduct;
+export default WishProduct;

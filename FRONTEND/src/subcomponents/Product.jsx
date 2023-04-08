@@ -8,7 +8,7 @@ const Product = ({ product }) => {
   return (
     <div className="product">
       <img className="wishlist" src={wishlist} alt="wishlist" />
-      <Link>
+      <Link to={`/product/${product.id}`}>
         <img src={product.image} alt={product.title} />
         <h3>{product.title}</h3>
         <p>{product.price} lei</p>
