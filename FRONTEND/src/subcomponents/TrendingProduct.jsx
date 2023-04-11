@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../redux/cart";
 
 import cart from "../assets/global/cart.png";
 import wishlist from "../assets/global/wishlist.png";
@@ -7,6 +9,7 @@ import wishlistAdded from "../assets/global/wishlist-added.png";
 import "./TrendingProduct.scss";
 
 const TrendingProduct = ({ product }) => {
+  const dispatch = useDispatch();
   return (
     <div className="product">
       <Link to={`/product/${product.id}`}>

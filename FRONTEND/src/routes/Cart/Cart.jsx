@@ -1,23 +1,28 @@
 import { Link } from "react-router-dom";
 
-import PRODUCTS_DATA from "../../data";
+import { useSelector } from "react-redux";
+
 import CartProduct from "../../components/cart/CartProduct";
 import Trending from "../../components/homepage/Trending";
 
 import "./Cart.scss";
+import { useState } from "react";
 
 const Cart = () => {
+  const { products, total } = useSelector((state) => state.cart);
+  // console.log(products);
+
   return (
     <main className="section-narrow cart-page">
       <h1>SUMAR COMANDA</h1>
       <div className="cart-products">
-        {PRODUCTS_DATA.map((product) => (
-          <CartProduct key={product.id} product={product} />
+        {products.map((product) => (
+          <CartProduct key={product.id + product.size} product={product} />
         ))}
       </div>
       <div className="total">
         <p>TOTAL</p>
-        <p>150 lei</p>
+        <p>{total} lei</p>
       </div>
       <div className="buttons">
         <Link to="/category" className="button3">

@@ -2,6 +2,7 @@ import Navlist from "./NavList";
 
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import logo from "../../assets/global/logo.png";
 import cart from "../../assets/global/cart.png";
@@ -10,6 +11,7 @@ import wishlist from "../../assets/global/wishlist.png";
 import "./Navbar.scss";
 
 const Navbar = () => {
+  const { quantity } = useSelector((state) => state.cart);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleMenu = () => {
@@ -47,7 +49,7 @@ const Navbar = () => {
           </Link>
           <Link to="/cart" className="cart cawi">
             <img src={cart} alt="" />
-            <span>10</span>
+            <span>{quantity}</span>
           </Link>
         </div>
 

@@ -61,12 +61,21 @@
           font-weight: 600;
         }
       }
+      .selected {
+        background-color: index.$white;
+      }
     }
     .button2 {
       margin: 20px auto 0 auto;
       display: block;
       width: 100%;
       max-width: 400px;
+    }
+    .error {
+      color: red;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 10px;
     }
     .description {
       margin-top: 20px;
