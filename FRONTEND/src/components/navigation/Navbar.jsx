@@ -12,6 +12,7 @@ import "./Navbar.scss";
 
 const Navbar = () => {
   const { quantity } = useSelector((state) => state.cart);
+  const { wishQuantity } = useSelector((state) => state.wishlist);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleMenu = () => {
@@ -45,7 +46,7 @@ const Navbar = () => {
         <div className="cawi-box">
           <Link to="/wishlist" className="wishlist cawi">
             <img src={wishlist} alt="" />
-            <span>0</span>
+            <span>{wishQuantity}</span>
           </Link>
           <Link to="/cart" className="cart cawi">
             <img src={cart} alt="" />

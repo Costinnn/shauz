@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addProduct } from "../redux/cart";
+import { addWishProduct } from "../redux/wishlist";
 
 import cart from "../assets/global/cart.png";
 import wishlist from "../assets/global/wishlist.png";
@@ -10,6 +10,10 @@ import "./TrendingProduct.scss";
 
 const TrendingProduct = ({ product }) => {
   const dispatch = useDispatch();
+  const handleAddWishlist = () => {
+    dispatch(addWishProduct({ ...product, size: "m", quantity: 1 }));
+  };
+
   return (
     <div className="product">
       <Link to={`/product/${product.id}`}>
@@ -21,8 +25,10 @@ const TrendingProduct = ({ product }) => {
           <p>{product.price} lei</p>
         </div>
         <div className="icons">
-          <img src={cart} alt="" />
-          <img src={wishlist} alt="" />
+          <Link to={`/product/${product.id}`}>
+            <img src={cart} alt="" />
+          </Link>
+          <img src={wishlist} alt="" onClick={handleAddWishlist} />
         </div>
       </div>
     </div>

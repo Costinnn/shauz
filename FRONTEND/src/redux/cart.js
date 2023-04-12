@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const cartSlice = createSlice({
+const cartSlice = createSlice({
   name: "cart",
   initialState: {
     products: [],
@@ -71,7 +71,7 @@ export const cartSlice = createSlice({
       );
       const oldQ = state.products[indx].quantity;
       const newQ = action.payload.productQ;
-      
+
       if (indx > -1) {
         state.products[indx].quantity = newQ;
         if (oldQ > newQ) {

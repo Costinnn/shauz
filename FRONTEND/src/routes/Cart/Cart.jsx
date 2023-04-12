@@ -6,7 +6,6 @@ import CartProduct from "../../components/cart/CartProduct";
 import Trending from "../../components/homepage/Trending";
 
 import "./Cart.scss";
-import { useState } from "react";
 
 const Cart = () => {
   const { products, total } = useSelector((state) => state.cart);

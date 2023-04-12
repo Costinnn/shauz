@@ -14,18 +14,14 @@ import { addProduct } from "../../redux/cart";
 const Product = () => {
   const urlId = useParams().id;
   const product = PRODUCTS_DATA[Number(urlId) - 1];
-  const [error, setError] = useState(false);
 
   const [size, setSize] = useState(null);
-  const {} = useSelector((state) => state.cart);
+
   const dispatch = useDispatch();
 
   const addCartProduct = () => {
     if (size) {
       dispatch(addProduct({ ...product, size, quantity: 1 }));
-      setError(false);
-    } else {
-      setError(true);
     }
   };
 
@@ -79,10 +75,9 @@ const Product = () => {
             <span>XL</span>
           </div>
         </div>
-        <button className="button2" onClick={addCartProduct}>
-          ADAUGA IN COS
+        <button className="button2" disabled={!size} onClick={addCartProduct}>
+          {!size ? "SELECTATI O MARIME" : "ADAUGA IN COS"}
         </button>
-        {error && <p className="error">Selectati o marime!</p>}
 
         <div className="description">
           <h3>DESCRIEREA PRODUSULUI</h3>
