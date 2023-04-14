@@ -16,7 +16,7 @@ const Cart = () => {
       <h1>SUMAR COMANDA</h1>
       <div className="cart-products">
         {products.map((product) => (
-          <CartProduct key={product.id + product.size} product={product} />
+          <CartProduct key={product._id + product.size} product={product} />
         ))}
       </div>
       <div className="total">
@@ -24,7 +24,7 @@ const Cart = () => {
         <p>{total} lei</p>
       </div>
       <div className="buttons">
-        <Link to="/category" className="button3">
+        <Link to="/" className="button3">
           CONTINUA CUMPARATURILE
         </Link>
         <Link to="/checkout" className="button2">

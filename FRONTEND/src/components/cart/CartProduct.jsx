@@ -15,13 +15,13 @@ const CartProduct = ({ product }) => {
     const newSize = e.target.value;
     const oldSize = size;
     const productQ = quantity;
-    const productId = product.id;
+    const productId = product._id;
     // setSize(e.target.value);
     dispatch(changeSize({ productId, productQ, newSize, oldSize }));
   };
 
   const handleQuantityChange = (e) => {
-    const productId = product.id;
+    const productId = product._id;
     const productSize = size;
     const productQ = e.target.value;
     setQuantity(e.target.value);
@@ -29,7 +29,7 @@ const CartProduct = ({ product }) => {
   };
 
   const handleDelete = () => {
-    const productId = product.id;
+    const productId = product._id;
     const productSize = size;
     dispatch(deleteProduct({ productId, productSize }));
   };
@@ -41,8 +41,8 @@ const CartProduct = ({ product }) => {
   // console.log(product);
   return (
     <div className="cart-product">
-      <Link to={`/product/${product.id}`}>
-        <img src={product.image} alt={product.title} />
+      <Link to={`/product/${product._id}`}>
+        <img src={product.images[0]} alt={product.title} />
       </Link>
 
       <div className="info">

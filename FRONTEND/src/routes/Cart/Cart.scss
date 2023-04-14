@@ -20,7 +20,9 @@
     justify-content: space-between;
     .button3,
     .button2 {
+      display: block;
       font-size: 13px;
+      width: 49%;
     }
   }
 }

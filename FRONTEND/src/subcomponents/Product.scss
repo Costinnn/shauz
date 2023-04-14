@@ -10,7 +10,9 @@
       cursor: pointer;
     }
     a {
+      display: block;
       > img {
+        width: 100%;
       }
       h3 {
         font-size: 15px;

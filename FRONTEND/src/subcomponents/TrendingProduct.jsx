@@ -1,23 +1,42 @@
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addWishProduct } from "../redux/wishlist";
+import { useDispatch, useSelector } from "react-redux";
+import { addWishProduct, deleteWishProduct } from "../redux/wishlist";
 
 import cart from "../assets/global/cart.png";
-import wishlist from "../assets/global/wishlist.png";
-import wishlistAdded from "../assets/global/wishlist-added.png";
+import wishlistImg from "../assets/global/wishlist.png";
+import wishlistAddedImg from "../assets/global/wishlist-added.png";
+
+import { useEffect, useState } from "react";
 
 import "./TrendingProduct.scss";
 
 const TrendingProduct = ({ product }) => {
+  const [added, setAdded] = useState(false);
+
+  const { wishProducts } = useSelector((state) => state.wishlist);
   const dispatch = useDispatch();
+
   const handleAddWishlist = () => {
-    dispatch(addWishProduct({ ...product, size: "m", quantity: 1 }));
+    if (!added) {
+      dispatch(addWishProduct({ ...product, size: "m", quantity: 1 }));
+    } else {
+      dispatch(deleteWishProduct({ productId: product._id, size: "m" }));
+      setAdded(false);
+    }
   };
+
+  useEffect(() => {
+    wishProducts.map((wishProduct) => {
+      if (wishProduct._id === product._id) {
+        setAdded(true);
+      }
+    });
+  }, [wishProducts]);
 
   return (
     <div className="product">
-      <Link to={`/product/${product.id}`}>
-        <img src={product.image} alt={product.title} />
+      <Link to={`/product/${product._id}`}>
+        <img src={product.images[0]} alt={product.title} />
       </Link>
       <div className="info">
         <div className="text">
@@ -25,10 +44,14 @@ const TrendingProduct = ({ product }) => {
           <p>{product.price} lei</p>
         </div>
         <div className="icons">
-          <Link to={`/product/${product.id}`}>
+          <Link to={`/product/${product._id}`}>
             <img src={cart} alt="" />
           </Link>
-          <img src={wishlist} alt="" onClick={handleAddWishlist} />
+          <img
+            src={added ? wishlistAddedImg : wishlistImg}
+            alt=""
+            onClick={handleAddWishlist}
+          />
         </div>
       </div>
     </div>

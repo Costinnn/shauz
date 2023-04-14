@@ -1,28 +1,47 @@
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addWishProduct } from "../redux/wishlist";
+import { useDispatch, useSelector } from "react-redux";
+import { addWishProduct, deleteWishProduct } from "../redux/wishlist";
 
-import wishlist from "../assets/global/wishlist.png";
+import wishlistImg from "../assets/global/wishlist.png";
+import wishlistAddedImg from "../assets/global/wishlist-added.png";
+
+import { useEffect, useState } from "react";
 
 import "./Product.scss";
 
 const Product = ({ product }) => {
+  const [added, setAdded] = useState(false);
+
+  const { wishProducts } = useSelector((state) => state.wishlist);
   const dispatch = useDispatch();
 
   const handleAddWishlist = () => {
-    dispatch(addWishProduct({ ...product, size: "m", quantity: 1 }));
+    if (!added) {
+      dispatch(addWishProduct({ ...product, size: "m", quantity: 1 }));
+    } else {
+      dispatch(deleteWishProduct({ productId: product._id, size: "m" }));
+      setAdded(false);
+    }
   };
+
+  useEffect(() => {
+    wishProducts.map((wishProduct) => {
+      if (wishProduct._id === product._id) {
+        setAdded(true);
+      }
+    });
+  }, [wishProducts]);
 
   return (
     <div className="product">
       <img
         className="wishlist"
-        src={wishlist}
+        src={added ? wishlistAddedImg : wishlistImg}
         alt="wishlist"
         onClick={handleAddWishlist}
       />
-      <Link to={`/product/${product.id}`}>
-        <img src={product.image} alt={product.title} />
+      <Link to={`/product/${product._id}`}>
+        <img src={product.images[0]} alt={product.title} />
         <h3>{product.title}</h3>
         <p>{product.price} lei</p>
       </Link>

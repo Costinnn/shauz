@@ -1,14 +1,16 @@
-import Product from "../../subcomponents/Product";
+import { useSelector } from "react-redux";
 
-import PRODUCTS_DATA from "../../data";
+import Product from "../../subcomponents/Product";
+// import PRODUCTS_DATA from "../../data";
 
 import "./Products.scss";
 
 const Products = () => {
+  const { dbProductsList } = useSelector((state) => state.dbProducts);
   return (
     <section className="section-narrow products">
-      {PRODUCTS_DATA.map((product) => (
-        <Product key={product.id} product={product} />
+      {dbProductsList.map((product) => (
+        <Product key={product._id} product={product} />
       ))}
     </section>
   );

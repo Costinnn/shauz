@@ -3,7 +3,7 @@ import image2 from "../../assets/products/img3.jpeg";
 import image3 from "../../assets/products/img4.jpeg";
 import wishlist from "../../assets/global/wishlist.png";
 
-import PRODUCTS_DATA from "../../data";
+// import PRODUCTS_DATA from "../../data";
 
 import "./Product.scss";
 import { Link, useParams } from "react-router-dom";
@@ -13,11 +13,13 @@ import { addProduct } from "../../redux/cart";
 
 const Product = () => {
   const urlId = useParams().id;
-  const product = PRODUCTS_DATA[Number(urlId) - 1];
+  const { dbProductsList } = useSelector((state) => state.dbProducts);
+  const dispatch = useDispatch();
+
+  const product = dbProductsList.filter((prd) => prd._id === urlId)[0];
+  const [displayImg, setDisplayImg] = useState(product.images[0]);
 
   const [size, setSize] = useState(null);
-
-  const dispatch = useDispatch();
 
   const addCartProduct = () => {
     if (size) {
@@ -29,12 +31,30 @@ const Product = () => {
     <div className="section-narrow product-page">
       <section className="photos">
         <div className="photo-list">
-          <img src={image1} alt="" />
-          <img src={image2} alt="" />
-          <img src={image3} alt="" />
+          <img
+            src={product.images[0]}
+            alt=""
+            onClick={() => {
+              setDisplayImg(product.images[0]);
+            }}
+          />
+          <img
+            src={product.images[1]}
+            alt=""
+            onClick={() => {
+              setDisplayImg(product.images[1]);
+            }}
+          />
+          <img
+            src={product.images[2]}
+            alt=""
+            onClick={() => {
+              setDisplayImg(product.images[2]);
+            }}
+          />
         </div>
         <img className="wishlist" src={wishlist} alt="wishlist" />
-        <img className="photo" src={product.image} alt="shauz" />
+        <img className="photo" src={displayImg} alt="shauz" />
       </section>
       <section className="options">
         <h2>{product.title}</h2>

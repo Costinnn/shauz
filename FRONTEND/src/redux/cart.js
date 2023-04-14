@@ -11,7 +11,7 @@ const cartSlice = createSlice({
     addProduct: (state, action) => {
       const indx = state.products.findIndex(
         (product) =>
-          product.id === action.payload.id &&
+          product._id === action.payload._id &&
           product.size === action.payload.size
       );
       if (state.products.length === 0 || indx < 0) {
@@ -28,7 +28,7 @@ const cartSlice = createSlice({
     deleteProduct: (state, action) => {
       const indx = state.products.findIndex(
         (product) =>
-          product.id === action.payload.productId &&
+          product._id === action.payload.productId &&
           product.size === action.payload.productSize
       );
 
@@ -43,12 +43,12 @@ const cartSlice = createSlice({
     changeSize: (state, action) => {
       const verifyIndx = state.products.findIndex(
         (product) =>
-          product.id === action.payload.productId &&
+          product._id === action.payload.productId &&
           product.size === action.payload.newSize
       );
       const updateIndx = state.products.findIndex(
         (product) =>
-          product.id === action.payload.productId &&
+          product._id === action.payload.productId &&
           product.size === action.payload.oldSize
       );
 
@@ -66,7 +66,7 @@ const cartSlice = createSlice({
     changeQuantity: (state, action) => {
       const indx = state.products.findIndex(
         (product) =>
-          product.id === action.payload.productId &&
+          product._id === action.payload.productId &&
           product.size === action.payload.productSize
       );
       const oldQ = state.products[indx].quantity;

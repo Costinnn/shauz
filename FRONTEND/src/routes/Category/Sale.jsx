@@ -1,11 +1,15 @@
 import Product from "../../subcomponents/Product";
 
-import PRODUCTS_DATA from "../../data";
+// import PRODUCTS_DATA from "../../data";
+import { useSelector } from "react-redux";
 
 import "./Sale.scss";
 
 const Sale = () => {
-  const products = PRODUCTS_DATA.filter((product) => product.sale);
+
+  const { dbProductsList } = useSelector((state) => state.dbProducts);
+
+  const products = dbProductsList.filter((product) => product.sale);
   return (
     <main className="section-narrow sale">
       <h1>REDUCERI</h1>
@@ -16,7 +20,7 @@ const Sale = () => {
       </p>
       <div className="products">
         {products.map((product) => (
-          <Product key={product.id} product={product} />
+          <Product key={product._id} product={product} />
         ))}
       </div>
       <p>

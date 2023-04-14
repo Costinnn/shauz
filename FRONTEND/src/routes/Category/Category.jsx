@@ -1,15 +1,23 @@
 import Product from "../../subcomponents/Product";
 
-import PRODUCTS_DATA from "../../data";
-
-import "./Category.scss";
+// import PRODUCTS_DATA from "../../data";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
+import "./Category.scss";
+
 const Category = () => {
+  const { dbProductsList } = useSelector((state) => state.dbProducts);
+
   const urlId = useParams().id;
-  const products = PRODUCTS_DATA.filter(
-    (product) => product.category[0] === urlId || product.category[1] === urlId
+
+  const products = dbProductsList.filter(
+    (product) =>
+      product.category[0] === urlId ||
+      product.category[1] === urlId ||
+      product.category[2] === urlId
   );
+
   return (
     <main className="section-narrow category-page">
       <h1>
@@ -23,7 +31,7 @@ const Category = () => {
       </p>
       <div className="products">
         {products.map((product) => (
-          <Product key={product.id} product={product} />
+          <Product key={product._id} product={product} />
         ))}
       </div>
       <div className="text">

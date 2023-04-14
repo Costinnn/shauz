@@ -16,21 +16,21 @@ const WishProduct = ({ product }) => {
   };
 
   const handleDeleteProduct = () => {
-    dispatch(deleteWishProduct({ productId: product.id, size: product.size }));
+    dispatch(deleteWishProduct({ productId: product._id, size: product.size }));
   };
 
   const handleSizeChange = (e) => {
     const newSize = e.target.value;
     const oldSize = size;
-    const productId = product.id;
+    const productId = product._id;
     // setSize(e.target.value);
     dispatch(changeSizeWishProduct({ productId, newSize, oldSize }));
   };
 
   return (
     <div className="wish-product">
-      <Link to={`/product/${product.id}`}>
-        <img src={product.image} alt={product.title} />
+      <Link to={`/product/${product._id}`}>
+        <img src={product.images[0]} alt={product.title} />
       </Link>
 
       <div className="info">

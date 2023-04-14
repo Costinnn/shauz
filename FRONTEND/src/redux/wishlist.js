@@ -10,7 +10,7 @@ const wishlistSlice = createSlice({
     addWishProduct: (state, action) => {
       const indx = state.wishProducts.findIndex(
         (product) =>
-          product.id === action.payload.id &&
+          product._id === action.payload._id &&
           product.size === action.payload.size
       );
       if (state.wishProducts.length === 0 || indx < 0) {
@@ -21,7 +21,7 @@ const wishlistSlice = createSlice({
     deleteWishProduct: (state, action) => {
       const indx = state.wishProducts.findIndex(
         (product) =>
-          product.id === action.payload.productId &&
+          product._id === action.payload.productId &&
           product.size === action.payload.size
       );
       if (indx > -1) {
@@ -32,12 +32,12 @@ const wishlistSlice = createSlice({
     changeSizeWishProduct: (state, action) => {
       const verifyIndx = state.wishProducts.findIndex(
         (product) =>
-          product.id === action.payload.productId &&
+          product._id === action.payload.productId &&
           product.size === action.payload.newSize
       );
       const updateIndx = state.wishProducts.findIndex(
         (product) =>
-          product.id === action.payload.productId &&
+          product._id === action.payload.productId &&
           product.size === action.payload.oldSize
       );
       if (verifyIndx > -1) {

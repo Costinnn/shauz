@@ -15,7 +15,7 @@ const Footer = () => {
         <Link to="/general/shipping">LIVRARE</Link>
         <Link to="/general/return">RETUR</Link>
         <Link to="/sizes">TABEL MARIMI</Link>
-        <Link to="/general/care">CUM SA INTRETII PRODUSUL?</Link>
+        <Link to="/general/care">INGRIJIRE PRODUSE</Link>
       </div>
 
       <div className="legal">
@@ -31,10 +31,10 @@ const Footer = () => {
         </div>
       </div>
       <div className="social">
-        <a href="http://">
+        <a href="https://www.instagram.com/_shauz_/?hl=enfa" target="_blank">
           <img src={insta} alt="instagram" />
         </a>
-        <a href="http://">
+        <a href="https://www.facebook.com/Shauzclo/" target="_blank">
           <img src={fbk} alt="facebook" />
         </a>
       </div>
