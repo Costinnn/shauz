@@ -33,7 +33,7 @@ const Checkout = () => {
           {products.map((product, index) => (
             <div className="product" key={product.id + index}>
               <div className="product-info">
-                <img src={product.image} alt="shauz" />
+                <img src={product.image[0]} alt="shauz" />
                 <div>
                   <h5 className="product-title">{product.title}</h5>
                   <span className="product-quantity">
