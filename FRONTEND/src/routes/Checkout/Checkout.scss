@@ -20,6 +20,12 @@
       p {
         font-weight: 500;
       }
+      .arrow {
+        width: 13px;
+      }
+      .rotate {
+        transform: rotate(180deg);
+      }
     }
     span {
       font-weight: 500;

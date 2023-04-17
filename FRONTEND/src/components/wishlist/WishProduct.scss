@@ -20,6 +20,19 @@
       }
       .price {
         text-align: end;
+        font-size: 13px;
+
+        .is-sale {
+          margin-right: 5px;
+          color: #92989a;
+          text-decoration: line-through;
+        }
+        .no-sale {
+          display: none;
+        }
+      }
+      .sale-price {
+        color: red;
       }
       form {
         width: 40%;

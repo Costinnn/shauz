@@ -22,6 +22,14 @@ const CustomersGallery = () => {
       <h2>TINUTE DE PE INSTAGRAM</h2>
       <p>Da-ne tag cu @_shauz_ si #shauzfit ca sa apari si tu</p>
       <div className="frame">
+        <div
+          className="frame-content"
+          style={{ transform: `translate(${-translateValue}%)` }}
+        >
+          {PRODUCTS_DATA.map((product) => (
+            <img src={product.image} alt={product.title} key={product.id} />
+          ))}
+        </div>
         <img
           className="left-arrow"
           style={{
@@ -40,15 +48,6 @@ const CustomersGallery = () => {
           alt="arrow"
           onClick={() => handleTranslate("right")}
         />
-
-        <div
-          className="frame-content"
-          style={{ transform: `translate(${-translateValue}%)` }}
-        >
-          {PRODUCTS_DATA.map((product) => (
-            <img src={product.image} alt={product.title} key={product.id} />
-          ))}
-        </div>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import checkoutCart from "../../assets/global/checkout-cart.png";
+import arrowDown from "../../assets/global/arrow-down.png";
 
 import "./Checkout.scss";
 import { useState } from "react";
@@ -25,13 +26,18 @@ const Checkout = () => {
         <div>
           <img src={checkoutCart} alt="" />
           <p>Detalii comanda</p>
+          <img
+            src={arrowDown}
+            alt=""
+            className={`arrow ${isOrderOpen ? "rotate" : ""}`}
+          />
         </div>
         <span>{total + 20} lei</span>
       </div>
       <div className={`order-summary ${isOrderOpen ? "is-open" : ""}`}>
         <div className="products-container">
-          {products.map((product, index) => (
-            <div className="product" key={product.id + index}>
+          {products.map((product) => (
+            <div className="product" key={product.id + product.size}>
               <div className="product-info">
                 <img src={product.images[0]} alt="shauz" />
                 <div>

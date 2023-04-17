@@ -63,6 +63,14 @@
       }
       .selected {
         background-color: index.$white;
+        border: 1px solid index.$lightblack;
+      }
+      .out-of-stock {
+        background-color: index.$white;
+        border: 1px solid index.$white;
+        span {
+          color: index.$lightgray;
+        }
       }
     }
     .button2 {

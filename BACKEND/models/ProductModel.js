@@ -7,6 +7,7 @@ const productSchema = new mongoose.Schema({
   stockQ: { type: Object, require: true },
   category: { type: Array },
   price: { type: Number, require: true },
+  oldPrice:{type: Number},
   sale: { type: Boolean, default: false },
 });
 

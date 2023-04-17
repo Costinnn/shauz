@@ -43,7 +43,12 @@ const Product = ({ product }) => {
       <Link to={`/product/${product._id}`}>
         <img src={product.images[0]} alt={product.title} />
         <h3>{product.title}</h3>
-        <p>{product.price} lei</p>
+        <p className={`${product.sale ? "sale-price" : ""}`}>
+          <span className={`${product.sale ? "is-sale" : "no-sale"}`}>
+            {product.oldPrice} lei
+          </span>
+          {product.price} lei
+        </p>
       </Link>
     </div>
   );

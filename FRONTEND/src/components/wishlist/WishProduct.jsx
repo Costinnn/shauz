@@ -35,7 +35,12 @@ const WishProduct = ({ product }) => {
 
       <div className="info">
         <h3>{product.title}</h3>
-        <p className="price">{product.price} lei</p>
+        <p className={`price ${product.sale ? "sale-price" : ""}`}>
+          <span className={`${product.sale ? "is-sale" : "no-sale"}`}>
+            {product.oldPrice} lei
+          </span>
+          {product.price} lei
+        </p>
         <form>
           <div>
             <label>Marime:</label>
@@ -45,11 +50,21 @@ const WishProduct = ({ product }) => {
               value={size}
               onChange={handleSizeChange}
             >
-              <option value="xs">XS</option>
-              <option value="s">S</option>
-              <option value="m">M</option>
-              <option value="l">L</option>
-              <option value="xl">XL</option>
+              <option value="xs" disabled={product.stockQ.xs <= 0}>
+                XS
+              </option>
+              <option value="s" disabled={product.stockQ.s <= 0}>
+                S
+              </option>
+              <option value="m" disabled={product.stockQ.m <= 0}>
+                M
+              </option>
+              <option value="l" disabled={product.stockQ.l <= 0}>
+                L
+              </option>
+              <option value="xl" disabled={product.stockQ.xl <= 0}>
+                XL
+              </option>
             </select>
           </div>
         </form>

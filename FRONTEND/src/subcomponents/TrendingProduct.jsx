@@ -41,7 +41,12 @@ const TrendingProduct = ({ product }) => {
       <div className="info">
         <div className="text">
           <h3>{product.title}</h3>
-          <p>{product.price} lei</p>
+          <p className={`${product.sale ? "sale-price" : ""}`}>
+            <span className={`${product.sale ? "is-sale" : "no-sale"}`}>
+              {product.oldPrice} lei
+            </span>
+            {product.price} lei
+          </p>
         </div>
         <div className="icons">
           <Link to={`/product/${product._id}`}>

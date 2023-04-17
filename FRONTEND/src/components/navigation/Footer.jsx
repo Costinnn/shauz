@@ -38,13 +38,7 @@ const Footer = () => {
           <img src={fbk} alt="facebook" />
         </a>
       </div>
-      <p>SHAUZ CLOTING 2023&copy; ALL RIGHTS RESERVED</p>
-      {/* <p>
-        MADE BY
-        <a href="http://www.webits.ro" target="_blank">
-          WEBITS
-        </a>
-      </p> */}
+      <p>SHAUZ CLOTHING 2023&copy; ALL RIGHTS RESERVED</p>
     </footer>
   );
 };

@@ -20,10 +20,17 @@ const Product = () => {
   const [displayImg, setDisplayImg] = useState(product.images[0]);
 
   const [size, setSize] = useState(null);
+  const [inStock, setInStock] = useState(product.stockQ);
 
   const addCartProduct = () => {
-    if (size) {
+    if (size && product.stockQ[size] > 0) {
       dispatch(addProduct({ ...product, size, quantity: 1 }));
+    }
+  };
+
+  const handleSelectedSize = (selectedSize) => {
+    if (product.stockQ[selectedSize] > 0) {
+      setSize(selectedSize);
     }
   };
 
@@ -65,32 +72,42 @@ const Product = () => {
         </div>
         <div className="sizes">
           <div
-            className={`size-btn ${size === "xs" ? "selected" : ""}`}
-            onClick={() => setSize("xs")}
+            className={`size-btn ${size === "xs" ? "selected" : ""} ${
+              inStock.xs <= 0 ? "out-of-stock" : ""
+            }`}
+            onClick={() => handleSelectedSize("xs")}
           >
             <span>XS</span>
           </div>
           <div
-            className={`size-btn ${size === "s" ? "selected" : ""}`}
-            onClick={() => setSize("s")}
+            className={`size-btn ${size === "s" ? "selected" : ""} ${
+              inStock.s <= 0 ? "out-of-stock" : ""
+            }`}
+            onClick={() => handleSelectedSize("s")}
           >
             <span>S</span>
           </div>
           <div
-            className={`size-btn ${size === "m" ? "selected" : ""}`}
-            onClick={() => setSize("m")}
+            className={`size-btn ${size === "m" ? "selected" : ""} ${
+              inStock.m <= 0 ? "out-of-stock" : ""
+            }`}
+            onClick={() => handleSelectedSize("m")}
           >
             <span>M</span>
           </div>
           <div
-            className={`size-btn ${size === "l" ? "selected" : ""}`}
-            onClick={() => setSize("l")}
+            className={`size-btn ${size === "l" ? "selected" : ""} ${
+              inStock.l <= 0 ? "out-of-stock" : ""
+            }`}
+            onClick={() => handleSelectedSize("l")}
           >
             <span>L</span>
           </div>
           <div
-            className={`size-btn ${size === "xl" ? "selected" : ""}`}
-            onClick={() => setSize("xl")}
+            className={`size-btn ${size === "xl" ? "selected" : ""} ${
+              inStock.xl <= 0 ? "out-of-stock" : ""
+            }`}
+            onClick={() => handleSelectedSize("xl")}
           >
             <span>XL</span>
           </div>
