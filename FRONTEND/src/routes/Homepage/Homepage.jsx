@@ -5,27 +5,27 @@ import Products from "../../components/homepage/Products";
 import Banner from "../../components/homepage/Banner";
 import CustomersGallery from "../../components/homepage/CustomersGallery";
 
-import axios from "axios";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setProducts } from "../../redux/dbProducts";
+// import axios from "axios";
+// import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
+// import { setProducts } from "../../redux/dbProducts";
 
 const Homepage = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:5000/api/products/getproducts"
-        );
-        dispatch(setProducts({ dbProducts: response.data }));
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getProducts();
-  }, []);
+  // useEffect(() => {
+  //   const getProducts = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "http://localhost:5000/api/products/getproducts"
+  //       );
+  //       dispatch(setProducts({ dbProducts: response.data }));
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   getProducts();
+  // }, []);
 
   return (
     <main className="homepage">

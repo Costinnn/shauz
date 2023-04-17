@@ -1,4 +1,4 @@
-import Navlist from "./NavList";
+import Navlist from './Navlist.jsx'
 
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";

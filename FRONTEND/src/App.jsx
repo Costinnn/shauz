@@ -12,10 +12,32 @@ import Notfound from "./routes/Notfound";
 import NavFooter from "./routes/NavFooter/NavFooter";
 
 import { Routes, Route } from "react-router-dom";
+import axios from "axios";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setProducts } from "./redux/dbProducts";
 
 import "./App.css";
 
 function App() {
+  
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const response = await axios.get(
+          "https://shzwebapi.onrender.com/api/products/getproducts"
+          // "http://localhost:5000/api/products/getproducts"
+        );
+        dispatch(setProducts({ dbProducts: response.data }));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getProducts();
+  }, []);
+
   return (
     <div className="App">
       <Routes>
