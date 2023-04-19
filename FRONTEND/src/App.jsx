@@ -25,8 +25,8 @@ function App() {
     const getProducts = async () => {
       try {
         const response = await axios.get(
-          import.meta.env.VITE_FETCH_PROD
-          // import.meta.env.VITE_FETCH_LOCAL
+          // import.meta.env.VITE_FETCH_PROD
+          import.meta.env.VITE_FETCH_LOCAL
         );
         dispatch(setProducts({ dbProducts: response.data }));
       } catch (err) {

@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Route, Routes } from "react-router-dom";
+
+import Login from "./routes/login/Login";
+import Navbar from "./components/navigation/Navbar";
+import OrderList from "./routes/order-list/OrderList";
+import Order from "./routes/order/Order";
+import ProductList from "./routes/product-list/ProductList";
+import Product from "./routes/product/Product";
+import AddProduct from "./routes/add-product/AddProduct";
+
+import axios from "axios";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setProducts } from "./redux/products";
+
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const response = await axios.get(
+          // import.meta.env.VITE_FETCH_PROD
+          import.meta.env.VITE_FETCH_LOCAL
+        );
+        dispatch(setProducts({ products: response.data }));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getProducts();
+  }, []);
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Routes>
+        <Route path="/" element={<Navbar />}>
+          <Route index element={<OrderList />} />
+          <Route path="order" element={<Order />} />
+          <Route path="productlist" element={<ProductList />} />
+          <Route path="product/:id" element={<Product />} />
+          <Route path="addproduct" element={<AddProduct />} />
+        </Route>
+      </Routes>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
