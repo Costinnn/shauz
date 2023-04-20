@@ -1,0 +1,78 @@
+.addproduct {
+  h1 {
+    margin-top: 30px;
+  }
+  form {
+    width: 90%;
+    margin: 20px auto 50px auto;
+
+    > div {
+      margin-top: 10px;
+      label:nth-of-type(1) {
+        color: #5d5e60;
+        font-weight: 500;
+        font-size: 18px;
+        margin-right: 10px;
+        width: 100px;
+        display: inline-block;
+      }
+    }
+    .title {
+      input {
+        width: 525px;
+      }
+    }
+    .desc {
+      display: flex;
+    }
+    .category {
+      span {
+        margin-left: 110px;
+      }
+      .button1 {
+        margin-left: 0 !important;
+      }
+
+      input {
+        width: 200px;
+        margin-right: 20px;
+      }
+    }
+    .price,
+    .sale {
+      input:nth-of-type(1) {
+        width: 100px;
+        margin-right: 10px;
+      }
+    }
+    .sale {
+      label:nth-of-type(2) {
+        margin-right: 10px;
+      }
+      input {
+        margin-right: 10px;
+      }
+    }
+    .stock {
+      input {
+        width: 70px;
+        margin: 0 20px 0 5px;
+      }
+    }
+    .images {
+      input {
+        width: 70%;
+        margin-right: 10px;
+      }
+      .img-added {
+        display: flex;
+        flex-direction: column;
+        margin-left: 110px;
+      }
+    }
+    .button3 {
+      margin: 30px auto 0 auto;
+      display: block;
+    }
+  }
+}

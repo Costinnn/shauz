@@ -2,6 +2,11 @@
   padding: 0 10px;
   h1 {
   }
+  > span {
+    display: block;
+    text-align: end;
+    padding: 0 100px;
+  }
   .photos {
     display: flex;
     align-items: center;
@@ -12,9 +17,16 @@
     }
   }
 
-  .update-photos {
+  .update-photos,
+  .update-desc,
+  .update-stock,
+  .update-category,
+  .update-general {
     width: 80%;
-    margin-top: 20px;
+    margin: 20px auto 0 auto;
+  }
+
+  .update-photos {
     h3 {
     }
     .photo-item {
@@ -47,9 +59,6 @@
     }
   }
   .update-desc {
-    width: 80%;
-    margin-top: 20px;
-
     > div {
       display: flex;
       align-items: center;
@@ -59,7 +68,51 @@
       }
     }
   }
-  .update-stock{
-    
+  .update-stock {
+    h3 {
+    }
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      .stock-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        span {
+        }
+        input {
+          width: 100px;
+        }
+      }
+    }
+  }
+  .update-category {
+    h3 {
+    }
+    > div {
+      display: flex;
+      justify-content: space-around;
+
+      .button1,
+      .button2 {
+        margin-left: 10px;
+      }
+    }
+  }
+  .update-general {
+    display: flex;
+    justify-content: space-around;
+    .price {
+      span:nth-of-type(2) {
+        color: red;
+      }
+    }
+  }
+  .button4{
+    margin: 30px auto;
+    display: block;
   }
 }
