@@ -24,10 +24,7 @@ function App() {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const response = await axios.get(
-          // import.meta.env.VITE_FETCH_PROD
-          import.meta.env.VITE_FETCH_LOCAL
-        );
+        const response = await axios.get(import.meta.env.VITE_FETCH_DB_DATA);
         dispatch(setProducts({ dbProducts: response.data }));
       } catch (err) {
         console.log(err);
