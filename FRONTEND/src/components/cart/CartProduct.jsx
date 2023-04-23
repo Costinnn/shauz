@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 const CartProduct = ({ product }) => {
   const [size, setSize] = useState(product.cartSize);
-  const [quantity, setQuantity] = useState(product.cartQ);
+  const [quantity, setQuantity] = useState(Number(product.cartQ));
 
   const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ const CartProduct = ({ product }) => {
   const handleQuantityChange = (e) => {
     const productId = product._id;
     const productSize = size;
-    const productQ = e.target.value;
+    const productQ = Number(e.target.value);
     setQuantity(e.target.value);
     dispatch(changeQuantity({ productId, productSize, productQ }));
   };
@@ -35,7 +35,7 @@ const CartProduct = ({ product }) => {
   };
 
   useEffect(() => {
-    setQuantity(product.cartQ);
+    setQuantity(Number(product.cartQ));
   }, [product.cartQ]);
 
   // console.log(product);
