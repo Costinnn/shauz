@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 
 const Checkout = () => {
   const [isOrderOpen, setIsOrderOpen] = useState(false);
+  const [successOrder, setSuccessOrder] = useState(false);
   const { products, total } = useSelector((state) => state.cart);
 
   // STATE for updating DATABASE fields
@@ -43,6 +44,9 @@ const Checkout = () => {
       if (response) {
         console.log(response.data);
         console.log("Order added with success!");
+        setSuccessOrder(true);
+
+        setTimeout(() => setSuccessOrder(false), 7000);
       }
     } catch (err) {
       console.log(err);
@@ -68,15 +72,15 @@ const Checkout = () => {
 
     await addOrderToDb(newOrder);
 
-    // setFullName("");
-    // setPhone("");
-    // setEmail("");
-    // setCounty("");
-    // setCity("");
-    // setPostalCode("");
-    // setStreet("");
-    // setNumber("");
-    // setOtherInfo("");
+    setFullName("");
+    setPhone("");
+    setEmail("");
+    setCounty("");
+    setCity("");
+    setPostalCode("");
+    setStreet("");
+    setNumber("");
+    setOtherInfo("");
   };
 
   useEffect(() => {
@@ -213,7 +217,9 @@ const Checkout = () => {
           placeholder="Informatii suplimentare..."
         ></textarea>
 
-        <button className="button2">TRIMITE COMANDA</button>
+        <button className={`button2 ${successOrder ? "btn-order" : ""}`}>
+          {successOrder ? "COMANDA PLASATA" : "TRIMITE COMANDA"}
+        </button>
       </form>
       <Link to="/cart" className="button3">
         INAPOI LA COS
