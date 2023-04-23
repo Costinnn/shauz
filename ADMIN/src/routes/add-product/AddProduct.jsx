@@ -4,17 +4,19 @@ import axios from "axios";
 import "./AddProduct.scss";
 
 const AddProduct = () => {
+  // STATE for updating DATABASE fields
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [category, setCategory] = useState("");
   const [categoryList, setCategoryList] = useState([]);
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
   const [atSale, setAtSale] = useState(false);
-  const [oldPrice, setOldPrice] = useState("");
+  const [oldPrice, setOldPrice] = useState(0);
   const [stock, setStock] = useState({ xs: 0, s: 0, m: 0, l: 0, xl: 0 });
   const [image, setImage] = useState("");
   const [imageList, setImageList] = useState([]);
 
+  // COMPONENT UPDATE FUNCTIONS
   const handleCategoryList = () => {
     if (category) {
       setCategoryList((prev) => [...prev, category]);
@@ -32,6 +34,7 @@ const AddProduct = () => {
     }
   };
 
+  //  DATABASE ADD FUNCTION
   const addProductToDb = async (newProduct) => {
     try {
       const response = await axios.post(
@@ -47,8 +50,13 @@ const AddProduct = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (price > oldPrice) {
+      setOldPrice(0);
+      setAtSale(false);
+    }
 
     const newProduct = {
       title,
@@ -61,7 +69,7 @@ const AddProduct = () => {
       sale: atSale,
     };
 
-    addProductToDb(newProduct);
+    await addProductToDb(newProduct);
 
     setTitle("");
     setDesc("");

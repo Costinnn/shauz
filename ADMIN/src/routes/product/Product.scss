@@ -16,7 +16,7 @@
       width: 20%;
     }
   }
-
+  .update-title,
   .update-photos,
   .update-desc,
   .update-stock,
@@ -24,6 +24,22 @@
   .update-general {
     width: 80%;
     margin: 20px auto 0 auto;
+  }
+
+  .update-title {
+    .title-input {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+      input {
+        width: 63%;
+        margin-right: 10px;
+      }
+      .button1 {
+        width: 90px;
+      }
+    }
   }
 
   .update-photos {
@@ -105,13 +121,25 @@
   .update-general {
     display: flex;
     justify-content: space-around;
+    .price,
+    .oldprice {
+      input {
+        margin-right: 10px;
+        width: 100px;
+      }
+    }
     .price {
       span:nth-of-type(2) {
         color: red;
       }
     }
+    .oldprice {
+      span {
+        color: red;
+      }
+    }
   }
-  .button4{
+  .button4 {
     margin: 30px auto;
     display: block;
   }
