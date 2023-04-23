@@ -6,8 +6,8 @@ import "./CartProduct.scss";
 import { useEffect, useState } from "react";
 
 const CartProduct = ({ product }) => {
-  const [size, setSize] = useState(product.size);
-  const [quantity, setQuantity] = useState(product.quantity);
+  const [size, setSize] = useState(product.cartSize);
+  const [quantity, setQuantity] = useState(product.cartQ);
 
   const dispatch = useDispatch();
 
@@ -35,8 +35,8 @@ const CartProduct = ({ product }) => {
   };
 
   useEffect(() => {
-    setQuantity(product.quantity);
-  }, [product.quantity]);
+    setQuantity(product.cartQ);
+  }, [product.cartQ]);
 
   // console.log(product);
   return (

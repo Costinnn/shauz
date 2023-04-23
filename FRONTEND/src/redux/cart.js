@@ -12,16 +12,16 @@ const cartSlice = createSlice({
       const indx = state.products.findIndex(
         (product) =>
           product._id === action.payload._id &&
-          product.size === action.payload.size
+          product.cartSize === action.payload.cartSize
       );
       if (state.products.length === 0 || indx < 0) {
         state.products.push(action.payload);
-        state.quantity += action.payload.quantity;
-        state.total += action.payload.quantity * action.payload.price;
+        state.quantity += action.payload.cartQ;
+        state.total += action.payload.cartQ * action.payload.price;
       } else if (indx >= 0) {
-        state.products[indx].quantity += action.payload.quantity;
-        state.quantity += action.payload.quantity;
-        state.total += action.payload.quantity * action.payload.price;
+        state.products[indx].cartQ += action.payload.cartQ;
+        state.quantity += action.payload.cartQ;
+        state.total += action.payload.cartQ * action.payload.price;
       }
     },
 
@@ -29,13 +29,13 @@ const cartSlice = createSlice({
       const indx = state.products.findIndex(
         (product) =>
           product._id === action.payload.productId &&
-          product.size === action.payload.productSize
+          product.cartSize === action.payload.productSize
       );
 
       if (indx > -1) {
-        state.quantity -= Number(state.products[indx].quantity);
+        state.quantity -= Number(state.products[indx].cartQ);
         state.total -=
-          state.products[indx].price * Number(state.products[indx].quantity);
+          state.products[indx].price * Number(state.products[indx].cartQ);
         state.products.splice(indx, 1);
       }
     },
@@ -44,22 +44,22 @@ const cartSlice = createSlice({
       const verifyIndx = state.products.findIndex(
         (product) =>
           product._id === action.payload.productId &&
-          product.size === action.payload.newSize
+          product.cartSize === action.payload.newSize
       );
       const updateIndx = state.products.findIndex(
         (product) =>
           product._id === action.payload.productId &&
-          product.size === action.payload.oldSize
+          product.cartSize === action.payload.oldSize
       );
 
       if (verifyIndx > -1) {
-        state.products[verifyIndx].quantity += action.payload.productQ;
+        state.products[verifyIndx].cartQ += action.payload.productQ;
 
         if (updateIndx > -1) {
           state.products.splice(updateIndx, 1);
         }
       } else if (updateIndx > -1) {
-        state.products[updateIndx].size = action.payload.newSize;
+        state.products[updateIndx].cartSize = action.payload.newSize;
       }
     },
 
@@ -67,13 +67,13 @@ const cartSlice = createSlice({
       const indx = state.products.findIndex(
         (product) =>
           product._id === action.payload.productId &&
-          product.size === action.payload.productSize
+          product.cartSize === action.payload.productSize
       );
-      const oldQ = state.products[indx].quantity;
+      const oldQ = state.products[indx].cartQ;
       const newQ = action.payload.productQ;
 
       if (indx > -1) {
-        state.products[indx].quantity = newQ;
+        state.products[indx].cartQ = newQ;
         if (oldQ > newQ) {
           state.quantity -= oldQ - newQ;
           state.total -= state.products[indx].price * (oldQ - newQ);

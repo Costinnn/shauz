@@ -1,19 +1,22 @@
-import image1 from "../../assets/products/img2.jpeg";
-import image2 from "../../assets/products/img3.jpeg";
-import image3 from "../../assets/products/img4.jpeg";
-import wishlist from "../../assets/global/wishlist.png";
+import wishlistImg from "../../assets/global/wishlist.png";
+import wishlistAddedImg from "../../assets/global/wishlist-added.png";
 
 // import PRODUCTS_DATA from "../../data";
 
-import "./Product.scss";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 import { addProduct } from "../../redux/cart";
+import { addWishProduct, deleteWishProduct } from "../../redux/wishlist";
+
+import "./Product.scss";
 
 const Product = () => {
+  const [added, setAdded] = useState(false);
   const urlId = useParams().id;
   const { dbProductsList } = useSelector((state) => state.dbProducts);
+  const { wishProducts } = useSelector((state) => state.wishlist);
   const dispatch = useDispatch();
 
   const product = dbProductsList.filter((prd) => prd._id === urlId)[0];
@@ -22,17 +25,37 @@ const Product = () => {
   const [size, setSize] = useState(null);
   const [inStock, setInStock] = useState(product.stockQ);
 
-  const addCartProduct = () => {
-    if (size && product.stockQ[size] > 0) {
-      dispatch(addProduct({ ...product, size, quantity: 1 }));
-    }
-  };
-
+  // COMPONENT functions
   const handleSelectedSize = (selectedSize) => {
     if (product.stockQ[selectedSize] > 0) {
       setSize(selectedSize);
     }
   };
+
+  // REDUX actions
+  const addCartProduct = () => {
+    if (size && product.stockQ[size] > 0) {
+      dispatch(addProduct({ ...product, cartSize: size, cartQ: 1 }));
+    }
+  };
+
+  const handleAddWishlist = () => {
+    if (!added) {
+      dispatch(addWishProduct({ ...product, cartSize: "m", cartQ: 1 }));
+    } else {
+      dispatch(deleteWishProduct({ productId: product._id, cartSize: "m" }));
+      setAdded(false);
+    }
+  };
+
+  //Verify if is ok wishlist
+  useEffect(() => {
+    wishProducts.map((wishProduct) => {
+      if (wishProduct._id === product._id) {
+        setAdded(true);
+      }
+    });
+  }, [wishProducts]);
 
   return (
     <div className="section-narrow product-page">
@@ -60,7 +83,12 @@ const Product = () => {
             }}
           />
         </div>
-        <img className="wishlist" src={wishlist} alt="wishlist" />
+        <img
+          src={added ? wishlistAddedImg : wishlistImg}
+          onClick={handleAddWishlist}
+          className="wishlist"
+          alt="wishlist"
+        />
         <img className="photo" src={displayImg} alt="shauz" />
       </section>
       <section className="options">

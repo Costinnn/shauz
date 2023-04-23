@@ -15,7 +15,7 @@ const Wishlist = () => {
       <h1>FAVORITE</h1>
       <div className="wish-products">
         {wishProducts.map((product) => (
-          <WishProduct key={product._id + product.size} product={product} />
+          <WishProduct key={product._id + product.cartSize} product={product} />
         ))}
       </div>
 

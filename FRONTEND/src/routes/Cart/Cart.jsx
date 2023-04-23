@@ -9,14 +9,13 @@ import "./Cart.scss";
 
 const Cart = () => {
   const { products, total } = useSelector((state) => state.cart);
-  // console.log(products);
 
   return (
     <main className="section-narrow cart-page">
       <h1>SUMAR COMANDA</h1>
       <div className="cart-products">
         {products.map((product) => (
-          <CartProduct key={product._id + product.size} product={product} />
+          <CartProduct key={product._id + product.cartSize} product={product} />
         ))}
       </div>
       <div className="total">

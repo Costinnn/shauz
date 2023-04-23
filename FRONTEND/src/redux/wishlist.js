@@ -11,7 +11,7 @@ const wishlistSlice = createSlice({
       const indx = state.wishProducts.findIndex(
         (product) =>
           product._id === action.payload._id &&
-          product.size === action.payload.size
+          product.cartSize === action.payload.cartSize
       );
       if (state.wishProducts.length === 0 || indx < 0) {
         state.wishProducts.push(action.payload);
@@ -22,7 +22,7 @@ const wishlistSlice = createSlice({
       const indx = state.wishProducts.findIndex(
         (product) =>
           product._id === action.payload.productId &&
-          product.size === action.payload.size
+          product.cartSize === action.payload.cartSize
       );
       if (indx > -1) {
         state.wishProducts.splice(indx, 1);
@@ -33,18 +33,18 @@ const wishlistSlice = createSlice({
       const verifyIndx = state.wishProducts.findIndex(
         (product) =>
           product._id === action.payload.productId &&
-          product.size === action.payload.newSize
+          product.cartSize === action.payload.newSize
       );
       const updateIndx = state.wishProducts.findIndex(
         (product) =>
           product._id === action.payload.productId &&
-          product.size === action.payload.oldSize
+          product.cartSize === action.payload.oldSize
       );
       if (verifyIndx > -1) {
         state.wishProducts.splice(updateIndx, 1);
         state.wishQuantity -= 1;
       } else if (updateIndx > -1) {
-        state.wishProducts[updateIndx].size = action.payload.newSize;
+        state.wishProducts[updateIndx].cartSize = action.payload.newSize;
       }
     },
   },

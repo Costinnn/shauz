@@ -37,13 +37,13 @@ const Checkout = () => {
       <div className={`order-summary ${isOrderOpen ? "is-open" : ""}`}>
         <div className="products-container">
           {products.map((product) => (
-            <div className="product" key={product.id + product.size}>
+            <div className="product" key={product._id + product.cartSize}>
               <div className="product-info">
                 <img src={product.images[0]} alt="shauz" />
                 <div>
                   <h5 className="product-title">{product.title}</h5>
                   <span className="product-quantity">
-                    {product.quantity} / {product.size}
+                    {product.cartQ} / {product.cartSize}
                   </span>
                 </div>
               </div>

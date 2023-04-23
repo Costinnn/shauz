@@ -15,15 +15,17 @@ const Product = ({ product }) => {
   const { wishProducts } = useSelector((state) => state.wishlist);
   const dispatch = useDispatch();
 
+  // REDUX actions
   const handleAddWishlist = () => {
     if (!added) {
-      dispatch(addWishProduct({ ...product, size: "m", quantity: 1 }));
+      dispatch(addWishProduct({ ...product, cartSize: "m", cartQ: 1 }));
     } else {
-      dispatch(deleteWishProduct({ productId: product._id, size: "m" }));
+      dispatch(deleteWishProduct({ productId: product._id, cartSize: "m" }));
       setAdded(false);
     }
   };
 
+  //Verify if is ok wishlist
   useEffect(() => {
     wishProducts.map((wishProduct) => {
       if (wishProduct._id === product._id) {

@@ -8,15 +8,17 @@ import "./WishProduct.scss";
 import { useState } from "react";
 
 const WishProduct = ({ product }) => {
-  const [size, setSize] = useState(product.size);
+  const [size, setSize] = useState(product.cartSize);
   const dispatch = useDispatch();
 
   const handleAddProductToCart = () => {
-    dispatch(addProduct({ ...product, size: size, quantity: 1 }));
+    dispatch(addProduct({ ...product, cartSize: size, cartQ: 1 }));
   };
 
   const handleDeleteProduct = () => {
-    dispatch(deleteWishProduct({ productId: product._id, size: product.size }));
+    dispatch(
+      deleteWishProduct({ productId: product._id, cartSize: product.cartSize })
+    );
   };
 
   const handleSizeChange = (e) => {

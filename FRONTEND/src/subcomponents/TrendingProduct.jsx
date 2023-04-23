@@ -18,9 +18,9 @@ const TrendingProduct = ({ product }) => {
 
   const handleAddWishlist = () => {
     if (!added) {
-      dispatch(addWishProduct({ ...product, size: "m", quantity: 1 }));
+      dispatch(addWishProduct({ ...product, cartSize: "m", cartQ: 1 }));
     } else {
-      dispatch(deleteWishProduct({ productId: product._id, size: "m" }));
+      dispatch(deleteWishProduct({ productId: product._id, cartSize: "m" }));
       setAdded(false);
     }
   };
