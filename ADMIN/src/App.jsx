@@ -12,6 +12,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setProducts } from "./redux/products";
+import { setOrders } from "./redux/orders";
 
 import "./App.css";
 
@@ -20,11 +21,12 @@ function App() {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const response = await axios.get(
-          // import.meta.env.VITE_FETCH_PROD
-          import.meta.env.VITE_FETCH_LOCAL
+        const productsResponse = await axios.get(
+          import.meta.env.VITE_GET_PRODUCTS
         );
-        dispatch(setProducts({ products: response.data }));
+        const ordersResponse = await axios.get(import.meta.env.VITE_GET_ORDERS);
+        dispatch(setProducts({ products: productsResponse.data }));
+        dispatch(setOrders({ orders: ordersResponse.data }));
       } catch (err) {
         console.log(err);
       }
@@ -37,7 +39,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navbar />}>
           <Route index element={<OrderList />} />
-          <Route path="order" element={<Order />} />
+          <Route path="order/:id" element={<Order />} />
           <Route path="productlist" element={<ProductList />} />
           <Route path="product/:id" element={<Product />} />
           <Route path="addproduct" element={<AddProduct />} />

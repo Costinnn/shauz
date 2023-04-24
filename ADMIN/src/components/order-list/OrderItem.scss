@@ -1,0 +1,38 @@
+.order-list {
+  .order-item {
+    .client,
+    .adress,
+    .order,
+    .actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      gap: 5px;
+      text-align: center;
+    }
+    .order {
+      span:nth-of-type(2) {
+        text-transform: uppercase;
+      }
+    }
+
+    .actions {
+      a {
+        padding: 5px 10px;
+        border: 1px solid #5d5e60;
+        border-radius: 5px;
+        color: #5d5e60;
+        font-weight: 500;
+      }
+      .shipped {
+        color: rgb(0, 223, 0);
+        font-weight: 500;
+      }
+      .notshipped {
+        color: lightcoral;
+        font-weight: 500;
+      }
+    }
+  }
+}

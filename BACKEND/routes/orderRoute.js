@@ -22,6 +22,23 @@ router.post("/createorder", async (req, res) => {
   }
 });
 
+//UPDATE SHIPPING STATUS
+router.patch("/updateshipping/:id", async (req, res) => {
+  try {
+    const response = await Order.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: { isShipped: true },
+      },
+      { new: true }
+    );
+
+    res.status(200).json(response);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 //DELETE
 router.delete("/deleteorder/:id", async (req, res) => {
   try {

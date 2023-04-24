@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import emailjs from "@emailjs/browser";
 
 import checkoutCart from "../../assets/global/checkout-cart.png";
 import arrowDown from "../../assets/global/arrow-down.png";
@@ -34,6 +35,35 @@ const Checkout = () => {
     }
   };
 
+  useEffect(() => {
+    const order = products.map((item) => {
+      return {
+        title: item.title,
+        orderedQ: item.cartQ,
+        orderedSize: item.cartSize,
+        price: item.price,
+      };
+    });
+    setOrderedProducts(order);
+  }, []);
+
+  //SEND ORDER ON EMAIL FUNCTION
+  const sendOrderEmail = async (order) => {
+    try {
+      const response = await emailjs.send(
+        import.meta.env.VITE_SERVICE_ID,
+        import.meta.env.VITE_TEMPLATE_ID,
+        order,
+        import.meta.env.VITE_PROD_ID
+      );
+      if (response) {
+        console.log("Order sent on email!");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   //  DATABASE ADD FUNCTION
   const addOrderToDb = async (newOrder) => {
     try {
@@ -53,6 +83,7 @@ const Checkout = () => {
     }
   };
 
+  //SEND ORDER MAIN FUNCTION
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -71,29 +102,18 @@ const Checkout = () => {
     };
 
     await addOrderToDb(newOrder);
+    await sendOrderEmail(newOrder);
 
-    setFullName("");
-    setPhone("");
-    setEmail("");
-    setCounty("");
-    setCity("");
-    setPostalCode("");
-    setStreet("");
-    setNumber("");
-    setOtherInfo("");
+    // setFullName("");
+    // setPhone("");
+    // setEmail("");
+    // setCounty("");
+    // setCity("");
+    // setPostalCode("");
+    // setStreet("");
+    // setNumber("");
+    // setOtherInfo("");
   };
-
-  useEffect(() => {
-    const order = products.map((item) => {
-      return {
-        title: item.title,
-        orderedQ: item.cartQ,
-        orderedSize: item.cartSize,
-        price: item.price,
-      };
-    });
-    setOrderedProducts(order);
-  }, []);
 
   return (
     <main className="section-narrow checkout">

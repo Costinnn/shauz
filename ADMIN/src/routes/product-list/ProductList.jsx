@@ -8,7 +8,7 @@ const ProductList = () => {
 
   return (
     <main className="section-narrow product-list">
-      <h1>Lista produse</h1>
+      <h1>Product list</h1>
       {products.map((product) => (
         <ProductItem product={product} key={product._id} />
       ))}

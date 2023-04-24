@@ -17,29 +17,29 @@ const ProductItem = ({ product }) => {
         <h3>{product.title}</h3>
         <span>ID: {product._id}</span>
         <div className="prices">
-          <span>Pret: </span>
+          <span>Price: </span>
           <span>{product.price} lei</span>
-          {product.sale ? <span>redus de la: {product.oldPrice}lei</span> : ""}
+          {product.sale ? <span> from: {product.oldPrice}lei</span> : ""}
         </div>
 
         <div className="category">
-          <span>Categorie:</span>
+          <span>Category:</span>
           {product.category.map((item) => (
             <span key={item}>{item}</span>
           ))}
         </div>
         <div className="sizes">
-          <span>Marimi disponibile: </span>
+          <span>Sizes on stock: </span>
           {productSizes.map((size) => (
             <span className="size-value" key={size}>
               {size}={product.stockQ[size]}
             </span>
           ))}
-          <span>Total: {productQ} buc.</span>
+          <span>Total: {productQ} pieces</span>
         </div>
       </div>
       <div className="actions">
-        <Link to={`/product/${product._id}`}>VEZI ARTICOL</Link>
+        <Link to={`/product/${product._id}`}>SEE PRODUCT</Link>
       </div>
     </div>
   );

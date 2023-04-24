@@ -12,6 +12,7 @@ const orderSchema = new mongoose.Schema({
   otherInfo: { type: String },
   orderedProducts: { type: Array, require: true },
   orderValue: { type: Number, require: true },
+  isShipped: { type: Boolean, default: false },
 });
 
 module.exports = mongoose.model("Order", orderSchema);
