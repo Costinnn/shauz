@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <section className="section-wide header">
       <div className="content">
-        <h1>"SHAUZ YOUTH COLLECTION" ESTE DISPONIBILA</h1>
+        <h1>"SHAUZ YOUTH COLLECTION"</h1>
         <Link className="button1" to="category/men">
           COLECTIA YOUTH
         </Link>

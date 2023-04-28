@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-// import PRODUCTS_DATA from "../../data";
+
 import TrendingProduct from "../../subcomponents/TrendingProduct";
 
 import "./Trending.scss";

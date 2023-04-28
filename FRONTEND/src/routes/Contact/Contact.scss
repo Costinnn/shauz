@@ -12,13 +12,16 @@
 
     input,
     textarea {
-      width: 80%;
+      width: 80% !important;
       max-width: 500px;
       margin-top: 20px;
       border: none;
       border-bottom: 1px solid #92989a;
       border-radius: 0;
       font-size: 13px;
+    }
+    textarea{
+      resize: none;
     }
     .button3 {
       width: 80%;

@@ -39,7 +39,7 @@ const ProductItem = ({ product }) => {
         </div>
       </div>
       <div className="actions">
-        <Link to={`/product/${product._id}`}>SEE PRODUCT</Link>
+        <Link to={`/user/product/${product._id}`}>SEE PRODUCT</Link>
       </div>
     </div>
   );

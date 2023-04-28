@@ -1,7 +1,6 @@
 import wishlistImg from "../../assets/global/wishlist.png";
 import wishlistAddedImg from "../../assets/global/wishlist-added.png";
-
-// import PRODUCTS_DATA from "../../data";
+import Trending from "../../components/homepage/Trending";
 
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -148,6 +147,7 @@ const Product = () => {
           <h3>DESCRIEREA PRODUSULUI</h3>
           <p>{product.desc}</p>
         </div>
+        <Trending />
       </section>
     </div>
   );

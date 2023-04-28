@@ -9,33 +9,22 @@ const Contact = () => {
     email: "",
     message: "",
   });
-  const [emailMessage, setEmailMessage] = useState("");
 
-  const handleSubmit = (e) => {
-    //   e.preventDefault();
-    //   emailjs
-    //     .send(
-    //       process.env.REACT_APP_SERVICE_ID,
-    //       process.env.REACT_APP_TEMPLATE_ID,
-    //       inputData,
-    //       process.env.REACT_APP_PROD_ID
-    //     )
-    //     .then(
-    //       function (response) {
-    //         console.log("SUCCESS!", response.status, response.text);
-    //         setEmailMessage("sent");
-    //       },
-    //       function (error) {
-    //         console.log("FAILED...", error);
-    //         setEmailMessage("error");
-    //       }
-    //     )
-    //     .then(
-    //       setInputData({ name: "", email: "", message: "" }),
-    //       setTimeout(() => {
-    //         setEmailMessage("");
-    //       }, 10000)
-    //     );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await emailjs.send(
+        import.meta.env.VITE_SERVICE_ID,
+        import.meta.env.VITE_TEMPLATE_ID,
+        inputData,
+        import.meta.env.VITE_PROD_ID
+      );
+      if (response) {
+        console.log("Message sent on email!");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleChange = (e) => {
@@ -71,7 +60,7 @@ const Contact = () => {
 
         <textarea
           rows="5"
-          cols="35"
+          cols="30"
           wrap="hard"
           name="message"
           id="message"
@@ -80,21 +69,7 @@ const Contact = () => {
           value={inputData.message}
           onChange={handleChange}
         />
-        {/* <p
-            className={
-              emailMessage === "sent"
-                ? "sent-message"
-                : emailMessage === "error"
-                ? "error-message"
-                : ""
-            }
-          >
-            {emailMessage === "sent"
-              ? "Mesaj trimis cu succes"
-              : emailMessage === "error"
-              ? "Mesajul nu a putut fi trimis"
-              : ""}
-          </p> */}
+
         <button className="button3">TRIMITE</button>
       </form>
     </main>

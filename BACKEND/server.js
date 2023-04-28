@@ -6,6 +6,7 @@ const cors = require("cors");
 // routes import
 const productRoutes = require("./routes/productRoute");
 const orderRoutes = require("./routes/orderRoute");
+const authRoutes = require("./routes/authRoute");
 
 // dependencies
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json());
 // routes
 app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/auth", authRoutes);
 
 // run server + DB
 mongoose

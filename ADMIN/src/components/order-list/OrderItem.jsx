@@ -34,7 +34,7 @@ const OrderItem = ({ order }) => {
       </div>
       <div className="actions">
         <span>ID: {order._id}</span>
-        <Link to={`/order/${order._id}`}>SEE ORDER</Link>
+        <Link to={`/user/order/${order._id}`}>SEE ORDER</Link>
         <span className={`${order.isShipped ? "shipped" : "notshipped"}`}>
           {order.isShipped ? "Order shipped" : "Not shipped"}
         </span>

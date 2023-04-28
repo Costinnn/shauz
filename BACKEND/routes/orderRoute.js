@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const Order = require("../models/OrderModel");
+const { tokenVerify } = require("../routes/tokenVerify");
 
 //GET
-router.get("/getorders", async (req, res) => {
+router.get("/getorders", tokenVerify, async (req, res) => {
   try {
     const orders = await Order.find();
     res.status(200).json(orders);
@@ -12,7 +13,7 @@ router.get("/getorders", async (req, res) => {
 });
 
 //CREATE
-router.post("/createorder", async (req, res) => {
+router.post("/createorder", tokenVerify, async (req, res) => {
   const newOrder = new Order(req.body);
   try {
     const savedOrder = await newOrder.save();
@@ -23,7 +24,7 @@ router.post("/createorder", async (req, res) => {
 });
 
 //UPDATE SHIPPING STATUS
-router.patch("/updateshipping/:id", async (req, res) => {
+router.patch("/updateshipping/:id", tokenVerify, async (req, res) => {
   try {
     const response = await Order.findByIdAndUpdate(
       req.params.id,
@@ -40,7 +41,7 @@ router.patch("/updateshipping/:id", async (req, res) => {
 });
 
 //DELETE
-router.delete("/deleteorder/:id", async (req, res) => {
+router.delete("/deleteorder/:id", tokenVerify, async (req, res) => {
   try {
     await Order.findByIdAndDelete(req.params.id);
     res.status(200).json("Order deleted...");

@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const Product = require("../models/ProductModel");
+const {tokenVerify} = require("../routes/tokenVerify");
 
 //GET
-router.get("/getproducts", async (req, res) => {
+router.get("/getproducts", tokenVerify, async (req, res) => {
   try {
     const products = await Product.find();
     res.status(200).json(products);
@@ -12,7 +13,7 @@ router.get("/getproducts", async (req, res) => {
 });
 
 //CREATE
-router.post("/createproduct", async (req, res) => {
+router.post("/createproduct",tokenVerify, async (req, res) => {
   const newProduct = new Product(req.body);
   try {
     const savedProduct = await newProduct.save();
@@ -23,7 +24,7 @@ router.post("/createproduct", async (req, res) => {
 });
 
 //DELETE
-router.delete("/deleteproduct/:id", async (req, res) => {
+router.delete("/deleteproduct/:id",tokenVerify, async (req, res) => {
   try {
     await Product.findByIdAndDelete(req.params.id);
     res.status(200).json("Product has been deleted...");
@@ -33,7 +34,7 @@ router.delete("/deleteproduct/:id", async (req, res) => {
 });
 
 //UPDATE TITLE / DESC / PRICE / OLDPRICE / SALE - VALUES
-router.patch("/update-value/:id", async (req, res) => {
+router.patch("/update-value/:id",tokenVerify, async (req, res) => {
   try {
     const response = await Product.findByIdAndUpdate(
       req.params.id,
@@ -50,7 +51,7 @@ router.patch("/update-value/:id", async (req, res) => {
 });
 
 //UPDATE SIZE VALUES
-router.patch("/update-size/:id", async (req, res) => {
+router.patch("/update-size/:id",tokenVerify, async (req, res) => {
   try {
     const response = await Product.findByIdAndUpdate(
       req.params.id,
@@ -67,7 +68,7 @@ router.patch("/update-size/:id", async (req, res) => {
 });
 
 // ADD IMAGES LIST / CATEGORIES - ITEMS
-router.patch("/add-arrayitem/:id", async (req, res) => {
+router.patch("/add-arrayitem/:id",tokenVerify, async (req, res) => {
   try {
     const response = await Product.findByIdAndUpdate(
       req.params.id,
@@ -89,7 +90,7 @@ router.patch("/add-arrayitem/:id", async (req, res) => {
 });
 
 // DELETE IMAGES LIST / CATEGORIES - ITEMS
-router.patch("/delete-arrayitem/:id", async (req, res) => {
+router.patch("/delete-arrayitem/:id",tokenVerify, async (req, res) => {
   try {
     const response = await Product.findByIdAndUpdate(
       req.params.id,
