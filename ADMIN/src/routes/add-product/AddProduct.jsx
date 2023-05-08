@@ -1,9 +1,16 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { addNewProduct } from "../../redux/products";
+
 import axios from "axios";
 
 import "./AddProduct.scss";
 
 const AddProduct = () => {
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
+
   // STATE for updating DATABASE fields
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -39,11 +46,12 @@ const AddProduct = () => {
     try {
       const response = await axios.post(
         import.meta.env.VITE_POST_LOCAL_URL,
-        newProduct
+        newProduct,
+        { headers: { token: `${user.token}` } }
       );
       if (response) {
-        console.log(response.data);
         console.log("Product added with success!");
+        return response.data;
       }
     } catch (err) {
       console.log(err);
@@ -69,7 +77,8 @@ const AddProduct = () => {
       sale: atSale,
     };
 
-    await addProductToDb(newProduct);
+    const dbProduct = await addProductToDb(newProduct);
+    dispatch(addNewProduct(dbProduct));
 
     setTitle("");
     setDesc("");

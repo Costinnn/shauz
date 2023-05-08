@@ -3,7 +3,7 @@ const Product = require("../models/ProductModel");
 const {tokenVerify} = require("../routes/tokenVerify");
 
 //GET
-router.get("/getproducts", tokenVerify, async (req, res) => {
+router.get("/getproducts", async (req, res) => {
   try {
     const products = await Product.find();
     res.status(200).json(products);

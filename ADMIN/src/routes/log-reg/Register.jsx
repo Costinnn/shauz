@@ -13,7 +13,19 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/user");
+
+    if (password === confirmPw) {
+      setFeedback(
+        "When your account is created and authorized you'll receive an email!"
+      );
+      setTimeout(() => {
+        setFeedback("");
+      }, 10000);
+    } else {
+      setFeedback("Passwords don't match");
+    }
+
+    // IMPLEMENT USER REGISTRATION
   };
   return (
     <main className="section-narrow log-reg">

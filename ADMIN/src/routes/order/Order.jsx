@@ -1,17 +1,20 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
+import { setOrderShipped, deleteOrder } from "../../redux/orders";
+
 import axios from "axios";
-import { useEffect } from "react";
 
 import "./Order.scss";
 
 const Order = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const urlId = useParams().id;
   const orderedProductsDb = [];
 
   // REDUX STATE
+  const { user } = useSelector((state) => state.user);
   const { orders } = useSelector((state) => state.orders);
   const { products } = useSelector((state) => state.products);
   const order = orders.filter((item) => item._id === urlId)[0];
@@ -30,11 +33,17 @@ const Order = () => {
 
   // DB ACTION FUNCTIONS
   const handleShipped = async () => {
+    console.log(user.token);
     try {
       const response = await axios.patch(
-        import.meta.env.VITE_UPDATE_SHIPPING + urlId
+        import.meta.env.VITE_UPDATE_SHIPPING + urlId,
+        {},
+        { headers: { token: `${user.token}` } }
       );
-      if (response) console.log("Order shipped!");
+      if (response) {
+        console.log("Order shipped!");
+        dispatch(setOrderShipped(urlId));
+      }
     } catch (err) {
       console.log(err);
     }
@@ -43,10 +52,12 @@ const Order = () => {
   const handleDelete = async () => {
     try {
       const response = await axios.delete(
-        import.meta.env.VITE_DELETE_ORDER + urlId
+        import.meta.env.VITE_DELETE_ORDER + urlId,
+        { headers: { token: `${user.token}` } }
       );
       if (response) {
-        navigate("/");
+        navigate("/user");
+        dispatch(deleteOrder(urlId));
         console.log("Order deleted!");
       }
     } catch (err) {

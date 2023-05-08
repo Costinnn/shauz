@@ -10,7 +10,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(setUser({ isAuthorized: false }));
+    dispatch(setUser({}));
     navigate("/");
   };
 

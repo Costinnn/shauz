@@ -13,7 +13,7 @@ router.get("/getorders", tokenVerify, async (req, res) => {
 });
 
 //CREATE
-router.post("/createorder", tokenVerify, async (req, res) => {
+router.post("/createorder", async (req, res) => {
   const newOrder = new Order(req.body);
   try {
     const savedOrder = await newOrder.save();
