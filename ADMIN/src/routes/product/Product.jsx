@@ -59,7 +59,7 @@ const Product = () => {
 
   //  DATABASE UPDATE FUNCTIONS
   const handleDeleteProduct = async () => {
-    const productUrl = import.meta.env.VITE_DELETE_PRODUCT_LOCAL_URL + urlId;
+    const productUrl = import.meta.env.VITE_DELETE_PRODUCT + urlId;
 
     try {
       const response = await axios.delete(productUrl, {
@@ -78,7 +78,7 @@ const Product = () => {
   };
 
   const handleDeleteArrayItem = async (field, stringToDelete) => {
-    const productUrl = import.meta.env.VITE_DELETE_ARRAYITEM_LOCAL_URL + urlId;
+    const productUrl = import.meta.env.VITE_DELETE_ARRAYITEM + urlId;
 
     try {
       const response = await axios.patch(
@@ -97,7 +97,7 @@ const Product = () => {
   };
 
   const handleAddArrayItem = async (field, stringToAdd, position = 0) => {
-    const productUrl = import.meta.env.VITE_ADD_ARRAYITEM_LOCAL_URL + urlId;
+    const productUrl = import.meta.env.VITE_ADD_ARRAYITEM + urlId;
 
     try {
       const response = await axios.patch(
@@ -120,7 +120,7 @@ const Product = () => {
   };
 
   const handleUpdateValue = async (field, newValue) => {
-    const productUrl = import.meta.env.VITE_UPDATE_VALUE_LOCAL_URL + urlId;
+    const productUrl = import.meta.env.VITE_UPDATE_VALUE + urlId;
 
     try {
       const response = await axios.patch(
@@ -143,7 +143,7 @@ const Product = () => {
   };
 
   const handleUpdateSize = async (sizeToChange, newValue) => {
-    const productUrl = import.meta.env.VITE_UPDATE_SIZE_LOCAL_URL + urlId;
+    const productUrl = import.meta.env.VITE_UPDATE_SIZE + urlId;
 
     try {
       const response = await axios.patch(

@@ -45,7 +45,7 @@ const AddProduct = () => {
   const addProductToDb = async (newProduct) => {
     try {
       const response = await axios.post(
-        import.meta.env.VITE_POST_LOCAL_URL,
+        import.meta.env.VITE_CREATE_PRODUCT,
         newProduct,
         { headers: { token: `${user.token}` } }
       );

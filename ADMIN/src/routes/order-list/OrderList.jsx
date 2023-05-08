@@ -15,9 +15,8 @@ const OrderList = () => {
         <h3>Order</h3>
         <h3>Actions</h3>
       </div>
-      {orders.map((order) => (
-        <OrderInfo order={order} key={order._id} />
-      ))}
+      {orders &&
+        orders.map((order) => <OrderInfo order={order} key={order._id} />)}
     </main>
   );
 };
