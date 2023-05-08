@@ -24,14 +24,13 @@ function App() {
           <Route path="register" element={<Register />} />
         </Route>
 
-        <Route path="user" element={<PrivateRoute />}>
-          <Route element={<Navbar />}>
-            <Route index element={<OrderList />} />
-            <Route path="productlist" element={<ProductList />} />
-            <Route path="order/:id" element={<Order />} />
-            <Route path="product/:id" element={<Product />} />
-            <Route path="addproduct" element={<AddProduct />} />
-          </Route>
+        <Route path="/user" element={<PrivateRoute />}>
+          {/* Navbar is on PrivateRoute.jsx */}
+          <Route index element={<OrderList />} />
+          <Route path="productlist" element={<ProductList />} />
+          <Route path="order/:id" element={<Order />} />
+          <Route path="product/:id" element={<Product />} />
+          <Route path="addproduct" element={<AddProduct />} />
         </Route>
 
         <Route path="/*" element={<NotFound />} />

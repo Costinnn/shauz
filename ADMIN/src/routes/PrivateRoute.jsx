@@ -6,6 +6,8 @@ import axios from "axios";
 import { setOrders } from "../redux/orders";
 import { setProducts } from "../redux/products";
 
+import Navbar from "../components/navigation/Navbar";
+
 const PrivateRoute = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
@@ -36,7 +38,12 @@ const PrivateRoute = () => {
   // console.log(user.isAuthorized);
 
   if (user.isAuthorized) {
-    return <Outlet />;
+    return (
+      <>
+        <Navbar />
+        <Outlet />
+      </>
+    );
   }
   return <Navigate to="/" state={{ from: location }} replace />;
 };

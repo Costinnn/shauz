@@ -1,4 +1,4 @@
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { setUser } from "../../redux/user";
@@ -30,7 +30,6 @@ const Navbar = () => {
           <li onClick={handleLogout}>Logout</li>
         </ul>
       </nav>
-      <Outlet />
     </>
   );
 };
