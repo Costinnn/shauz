@@ -19,13 +19,13 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route element={<PublicRoute />}>
-          <Route path="/" element={<Login />} />
+        <Route path="/" element={<PublicRoute />}>
+          <Route index element={<Login />} />
           <Route path="register" element={<Register />} />
         </Route>
 
-        <Route element={<PrivateRoute />}>
-          <Route path="user" element={<Navbar />}>
+        <Route path="user" element={<PrivateRoute />}>
+          <Route element={<Navbar />}>
             <Route index element={<OrderList />} />
             <Route path="productlist" element={<ProductList />} />
             <Route path="order/:id" element={<Order />} />
