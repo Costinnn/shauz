@@ -1,18 +1,21 @@
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import emailjs from "@emailjs/browser";
 
 import checkoutCart from "../../assets/global/checkout-cart.png";
 import arrowDown from "../../assets/global/arrow-down.png";
+import { emptyCart } from "../../redux/cart";
 
 import "./Checkout.scss";
-import { useEffect, useState } from "react";
 
 const Checkout = () => {
+  const navigate = useNavigate();
   const [isOrderOpen, setIsOrderOpen] = useState(false);
   const [successOrder, setSuccessOrder] = useState(false);
   const { products, total } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
   // STATE for updating DATABASE fields
   const [fullName, setFullName] = useState("");
@@ -38,6 +41,7 @@ const Checkout = () => {
   useEffect(() => {
     const order = products.map((item) => {
       return {
+        _id: item._id,
         title: item.title,
         orderedQ: item.cartQ,
         orderedSize: item.cartSize,
@@ -75,8 +79,11 @@ const Checkout = () => {
         console.log(response.data);
         console.log("Order added with success!");
         setSuccessOrder(true);
-
-        setTimeout(() => setSuccessOrder(false), 7000);
+        dispatch(emptyCart({}));
+        setTimeout(() => {
+          setSuccessOrder(false);
+          navigate("/");
+        }, 7000);
       }
     } catch (err) {
       console.log(err);

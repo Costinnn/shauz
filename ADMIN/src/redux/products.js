@@ -84,6 +84,18 @@ const productsSlice = createSlice({
         );
       }
     },
+    updateShippedStock: (state, action) => {
+      const indx = state.products.findIndex(
+        (product) => product._id === action.payload._id
+      );
+
+      if (indx > -1) {
+        const arrayToModify = state.products[indx].stockQ;
+        arrayToModify[action.payload.orderedSize] -= Number(
+          action.payload.orderedQ
+        );
+      }
+    },
   },
 });
 
@@ -95,6 +107,7 @@ export const {
   addArrayItem,
   updateSize,
   updateValue,
+  updateShippedStock,
 } = productsSlice.actions;
 
 export default productsSlice.reducer;

@@ -8,6 +8,11 @@ const cartSlice = createSlice({
     total: 0,
   },
   reducers: {
+    emptyCart: (state, action) => {
+      state.products = [];
+      state.quantity = 0;
+      state.total = 0;
+    },
     addProduct: (state, action) => {
       const indx = state.products.findIndex(
         (product) =>
@@ -87,7 +92,12 @@ const cartSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addProduct, deleteProduct, changeSize, changeQuantity } =
-  cartSlice.actions;
+export const {
+  addProduct,
+  deleteProduct,
+  changeSize,
+  changeQuantity,
+  emptyCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -11,21 +12,45 @@ const Register = () => {
   const [confirmPw, setConfirmPw] = useState("");
   const [feedback, setFeedback] = useState("");
 
-  const handleSubmit = (e) => {
+  const registerUser = async (credentials) => {
+    try {
+      const response = await axios.post(
+        import.meta.env.VITE_REGISTER_USER,
+        credentials
+      );
+      if (response) {
+        setTimeout(() => {
+          navigate("/user");
+        }, 5000);
+        return response;
+      }
+    } catch (err) {
+      console.log(err);
+      setFeedback(err.response.data);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (password === confirmPw) {
-      setFeedback(
-        "When your account is created and authorized you'll receive an email!"
-      );
-      setTimeout(() => {
-        setFeedback("");
-      }, 10000);
+      const newCredentials = {
+        email,
+        password,
+      };
+
+      const response = await registerUser(newCredentials);
+
+      response &&
+        setFeedback(
+          "When your account is created and authorized you'll receive an email!"
+        );
     } else {
       setFeedback("Passwords don't match");
     }
-
-    // IMPLEMENT USER REGISTRATION
+    setTimeout(() => {
+      setFeedback("");
+    }, 5000);
   };
   return (
     <main className="section-narrow log-reg">

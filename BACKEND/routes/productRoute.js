@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Product = require("../models/ProductModel");
-const {tokenVerify} = require("../routes/tokenVerify");
+const { tokenVerify } = require("../routes/tokenVerify");
 
 //GET
 router.get("/getproducts", async (req, res) => {
@@ -13,7 +13,7 @@ router.get("/getproducts", async (req, res) => {
 });
 
 //CREATE
-router.post("/createproduct",tokenVerify, async (req, res) => {
+router.post("/createproduct", tokenVerify, async (req, res) => {
   const newProduct = new Product(req.body);
   try {
     const savedProduct = await newProduct.save();
@@ -24,7 +24,7 @@ router.post("/createproduct",tokenVerify, async (req, res) => {
 });
 
 //DELETE
-router.delete("/deleteproduct/:id",tokenVerify, async (req, res) => {
+router.delete("/deleteproduct/:id", tokenVerify, async (req, res) => {
   try {
     await Product.findByIdAndDelete(req.params.id);
     res.status(200).json("Product has been deleted...");
@@ -34,7 +34,7 @@ router.delete("/deleteproduct/:id",tokenVerify, async (req, res) => {
 });
 
 //UPDATE TITLE / DESC / PRICE / OLDPRICE / SALE - VALUES
-router.patch("/update-value/:id",tokenVerify, async (req, res) => {
+router.patch("/update-value/:id", tokenVerify, async (req, res) => {
   try {
     const response = await Product.findByIdAndUpdate(
       req.params.id,
@@ -51,7 +51,7 @@ router.patch("/update-value/:id",tokenVerify, async (req, res) => {
 });
 
 //UPDATE SIZE VALUES
-router.patch("/update-size/:id",tokenVerify, async (req, res) => {
+router.patch("/update-size/:id", tokenVerify, async (req, res) => {
   try {
     const response = await Product.findByIdAndUpdate(
       req.params.id,
@@ -67,8 +67,33 @@ router.patch("/update-size/:id",tokenVerify, async (req, res) => {
   }
 });
 
+//UPDATE ORDERED PRODUCTS stock
+router.patch("/update-ordered-products-stock", async (req, res) => {
+  try {
+    let count = 0;
+    for await (const item of req.body.shippedProducts) {
+      const response = await Product.findByIdAndUpdate(
+        item._id,
+        {
+          $inc: { [`stockQ.${item.orderedSize}`]: -item.orderedQ },
+        },
+        { new: true }
+      );
+      if (response.title) {
+        count++;
+      } else {
+        throw new Error("Could not update stock of ordered products.");
+      }
+    }
+
+    res.status(200).json(`${count} ordered products stock updated!`);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // ADD IMAGES LIST / CATEGORIES - ITEMS
-router.patch("/add-arrayitem/:id",tokenVerify, async (req, res) => {
+router.patch("/add-arrayitem/:id", tokenVerify, async (req, res) => {
   try {
     const response = await Product.findByIdAndUpdate(
       req.params.id,
@@ -90,7 +115,7 @@ router.patch("/add-arrayitem/:id",tokenVerify, async (req, res) => {
 });
 
 // DELETE IMAGES LIST / CATEGORIES - ITEMS
-router.patch("/delete-arrayitem/:id",tokenVerify, async (req, res) => {
+router.patch("/delete-arrayitem/:id", tokenVerify, async (req, res) => {
   try {
     const response = await Product.findByIdAndUpdate(
       req.params.id,

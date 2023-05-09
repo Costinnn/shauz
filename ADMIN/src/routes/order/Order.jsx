@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { setOrderShipped, deleteOrder } from "../../redux/orders";
+import { updateShippedStock } from "../../redux/products";
 
 import axios from "axios";
 
@@ -32,8 +33,24 @@ const Order = () => {
   getPhotos();
 
   // DB ACTION FUNCTIONS
-  const handleShipped = async () => {
-    console.log(user.token);
+  const updateShippedProductsStock = async (shippedProducts) => {
+    try {
+      const response = await axios.patch(
+        import.meta.env.VITE_UPDATE_STOCK_ORDER,
+        shippedProducts
+      );
+      if (response) {
+        console.log("Shipped products stock updated");
+        // redux state update
+        shippedProducts.shippedProducts.forEach((item) => {
+          dispatch(updateShippedStock(item));
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const updateShippingStatus = async () => {
     try {
       const response = await axios.patch(
         import.meta.env.VITE_UPDATE_SHIPPING + urlId,
@@ -44,6 +61,18 @@ const Order = () => {
         console.log("Order shipped!");
         dispatch(setOrderShipped(urlId));
       }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // COMPONENT TRIGGER FUNCTIONS
+  const handleShipped = async () => {
+    try {
+      await updateShippedProductsStock({
+        shippedProducts: order.orderedProducts,
+      });
+      await updateShippingStatus();
     } catch (err) {
       console.log(err);
     }
@@ -106,7 +135,11 @@ const Order = () => {
       </div>
 
       <div className="buttons">
-        <button className="button3" onClick={handleShipped}>
+        <button
+          className={`button3 ${order.isShipped && "disabled-btn"}`}
+          onClick={handleShipped}
+          disabled={order.isShipped}
+        >
           MARK AS SHIPPED
         </button>
         <button className="button4" onClick={handleDelete}>
