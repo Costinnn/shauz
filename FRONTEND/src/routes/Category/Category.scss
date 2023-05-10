@@ -22,3 +22,26 @@
     }
   }
 }
+
+@media (min-width: 800px) {
+  .category-page {
+    h1 {
+      font-size: 40px;
+    }
+    > p {
+      font-size: 18px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .products {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .text {
+      > p {
+        font-size: 18px;
+        max-width: 1000px;
+        margin: 20px auto;
+      }
+    }
+  }
+}

@@ -4,10 +4,28 @@
     text-align: center;
     border-bottom: 1px solid #2d3031;
   }
+  .wish-products {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 
   .button3 {
     display: block;
     font-size: 13px;
-    margin-top: 50px;
+    margin: 50px auto 0 auto;
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 800px) {
+  .wish-page {
+    h1 {
+      font-size: 40px;
+    }
+    .button3{
+      font-size: 18px;
+    }
   }
 }

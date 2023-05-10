@@ -53,15 +53,18 @@
 
 @media (min-width: 800px) {
   .navigationmenu {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    width: 70%;
-    height: 50px;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: auto;
+    height: auto;
     background-color: transparent;
     display: flex;
-    justify-content: flex-end;
     opacity: 1;
+    transition: none;
+    margin-left: auto;
+    margin-right: 50px;
 
     svg {
       display: none;
@@ -73,6 +76,7 @@
       li {
         font-family: "Poppins", sans-serif;
         font-size: 20px;
+        font-weight: 500;
         margin-top: 0px;
         padding: 10px 10px 10px 10px;
         img {

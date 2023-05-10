@@ -1,8 +1,8 @@
 .wish-products {
-  margin-top: 20px;
   .wish-product {
     display: flex;
     margin-top: 10px;
+    max-width: 900px;
     a {
       width: 30%;
       img {
@@ -75,6 +75,44 @@
           border: 1px solid #2d3031;
           color: #2d3031;
           padding: 2px 5px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .wish-products {
+    .wish-product {
+      .info {
+        h3 {
+          font-size: 30px;
+        }
+        .price {
+          font-weight: 500;
+          font-size: 20px;
+        }
+
+        form {
+          > div {
+            label,
+            #size {
+              font-size: 20px;
+            }
+            #size {
+              width: 60px;
+            }
+          }
+        }
+        .desc {
+          font-size: 14px;
+        }
+        .actions {
+          .remove,
+          .add {
+            margin-top: 35px;
+            font-size: 15px;
+          }
         }
       }
     }

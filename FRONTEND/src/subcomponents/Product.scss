@@ -36,3 +36,26 @@
     }
   }
 }
+
+@media (min-width: 800px) {
+  .products {
+    .product {
+      .wishlist {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+      }
+      a {
+        h3 {
+          font-size: 20px;
+          margin-left: 50px;
+        }
+        p {
+          margin-left: 50px;
+          font-weight: 400;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}

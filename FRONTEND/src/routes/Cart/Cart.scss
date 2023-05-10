@@ -4,6 +4,9 @@
     border-bottom: 1px solid #2d3031;
   }
   .cart-products {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
 
   .total {
@@ -23,6 +26,25 @@
       display: block;
       font-size: 13px;
       width: 49%;
+      max-width: 500px;
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .cart-page {
+    h1 {
+      font-size: 40px;
+    }
+
+    .total {
+      font-size: 25px;
+    }
+    .buttons {
+      .button3,
+      .button2 {
+        font-size: 18px;
+      }
     }
   }
 }

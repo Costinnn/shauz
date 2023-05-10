@@ -1,4 +1,4 @@
-import Navlist from './Navlist.jsx'
+import Navlist from "./Navlist.jsx";
 
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
@@ -43,6 +43,9 @@ const Navbar = () => {
         <Link to="/">
           <img className="logo" src={logo} alt="imglogo" />
         </Link>
+
+        <Navlist handleMenu={handleMenu} showNav={menuOpen ? "shownav" : ""} />
+
         <div className="cawi-box">
           <Link to="/wishlist" className="wishlist cawi">
             <img src={wishlist} alt="" />
@@ -53,8 +56,6 @@ const Navbar = () => {
             <span>{quantity}</span>
           </Link>
         </div>
-
-        <Navlist handleMenu={handleMenu} showNav={menuOpen ? "shownav" : ""} />
       </nav>
       <Outlet />
     </>
