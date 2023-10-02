@@ -1,5 +1,7 @@
 # Ecommerce store + Admin panel - full stack MERN application
 
+<img src="https://github.com/Costinnn/shauz-ecommerce-store/assets/103998434/034b2fbb-1cf7-4d27-858e-8fc000e2e4f9" width=70%>
+
 ## Introduction - project's aim
 From the desire to know more about web applications, not only the front end part, I wanted to create an application that contains both the front end and the back end part,so I decided that I would create a online store, for which products and orders can be managed from an administrator panel.
 
